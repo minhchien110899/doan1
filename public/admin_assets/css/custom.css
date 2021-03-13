@@ -1,0 +1,11 @@
+/* your styles go here */
+h1,h2,h3,h4,h5,h6,td,th,p{
+	font-family: 'Montserrat', sans-serif !important;
+}
+button, input, optgroup, select, textarea,label {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+label{
+	font-weight: bold !important;
+}
