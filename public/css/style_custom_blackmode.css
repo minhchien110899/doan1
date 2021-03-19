@@ -1,0 +1,42 @@
+h1,h2,h3,h4,h5,h6,p{
+    color: aliceblue;
+}
+.menu-wrap{
+    background-color: #6c757d !important;
+}
+.site-mobile-menu{
+    background-color: #a3a3a3;
+}
+.site-navbar .site-navigation .site-menu > li > a {
+    color: whitesmoke !important;
+}
+.site-navbar{
+    background-color: #1c1e21;
+}
+.dropdown-menu{
+    background-color: #444950;
+}
+.dropdown-item{
+    color: aliceblue;
+}
+.dropdown-item:hover{
+    background-color: #6c757d;
+    color: aliceblue;
+}
+.card-body{
+    background: #343a40;
+    color: aliceblue;
+}
+.card-title {
+    color: aliceblue;
+}
+.card-header{
+    background-color: #6c757d;
+    color: aliceblue;
+}
+.table{
+    color: aliceblue;
+}
+.modal-content{
+    background-color: #c9c9c9 !important;
+}

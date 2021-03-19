@@ -23,7 +23,7 @@
      {{-- <script src="{{ url('/js/jquery-3.3.1.min.js') }}"></script> --}}
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="{{ url('/css/style.css') }}">
-
+    <!-- <link rel="stylesheet" href="{{url('/css/style_custom_blackmode.css')}}" > -->
     <link rel="shortcut icon" href="{{ url('/images/favicon.png?3') }}">
 
   </head>
@@ -66,7 +66,7 @@
 
 
         <div class="container mb-4">
-          <div class="menu-wrap d-flex align-items-center bg-light">
+          <div class="menu-wrap d-flex align-items-center" style="background-color: #f6f5f5;">
             <span class="d-inline-block d-lg-none"><a href="#" class="text-black site-menu-toggle js-menu-toggle py-5"><span class="icon-menu h3 text-black"></span></a></span>
 
               
@@ -190,7 +190,8 @@
      <script src="{{ url('/js/bootstrap-datepicker.min.js') }}"></script> 
     <script src="{{ url('/js/aos.js') }}"></script>
 
-    <script src="{{ url('/js/main.js') }}"></script> 
+    <script src="{{ url('/js/main.js') }}"></script>
+    <!-- <script src="{{ url('/js/black_mode.js') }}"></script>   -->
   </body>
 
 </html>
