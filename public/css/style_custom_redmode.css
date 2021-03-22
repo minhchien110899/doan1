@@ -1,0 +1,37 @@
+.site-navbar{
+    background-color: #fbb3ae !important;
+}
+.menu-wrap{
+    background-color: #f6665c !important;
+}
+.menu-wrap .nav-link{
+    color: aliceblue;
+}
+.dropdown-menu{
+    background-color: #fef4f3;
+}
+.dropdown-item{
+    color: black;
+}
+.dropdown-item:hover{
+    background-color: #f6665c;
+}
+.site-footer{
+    background: #f6665c;
+}
+.card{
+    background-color: #f6665c;
+    color: black !important;
+}
+.card .card-title{
+    color: black;
+}
+.card-header h4{
+    color: aliceblue;
+}
+.card-body{
+    background-color:#fdd9d6;
+}
+.modal-content{
+    background-color: #fdd9d6; 
+}
