@@ -14,19 +14,19 @@
                     <p><input type="radio" name="theme_color" value="default" checked></p>
                 </div>
                 <div class="col-sm-6 col-md-4 col-xl-2">
-                    <div class="btn w-100 w3-round-large w3-border" style="background-color: #ffc0cb;">Pink</div>
+                    <div class="btn w-100 w3-round-large w3-border w3-border-dark-gray" style="background-color: #ffc0cb;">Pink</div>
                     <p><input type="radio" name="theme_color" value="pink"></p>
                 </div>
                 <div class="col-sm-6 col-md-4 col-xl-2">
-                    <div class="btn w-100 w3-round-large w3-border" style="background-color: #fbb3ae; padding: 10px 14px;">Salmon</div>
+                    <div class="btn w-100 w3-round-large w3-border w3-border-dark-gray" style="background-color: #fbb3ae; padding: 10px 14px;">Salmon</div>
                     <p><input type="radio" name="theme_color" value="red"></p>
                 </div>
                 <div class="col-sm-6 col-md-4 col-xl-2 ">
-                    <div class="btn w-100 w3-round-large w3-border" style="background-color: #4caf50;">Green</div>
+                    <div class="btn w-100 w3-round-large w3-border w3-border-dark-gray" style="background-color: #85e889;">Green</div>
                     <p><input type="radio" name="theme_color" value="green"></p>
                 </div>
                 <div class="col-sm-6 col-md-4 col-xl-2">
-                    <div class="btn w-100 w3-round-large w3-border" style="background-color: cyan;">Blue</div>
+                    <div class="btn w-100 w3-round-large w3-border w3-border-dark-gray" style="background-color: cyan;">Blue</div>
                     <p><input type="radio" name="theme_color" value="cyan"></p>
                 </div>
                 <div class="col-sm-6 col-md-4 col-xl-2">
