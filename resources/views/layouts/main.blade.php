@@ -24,8 +24,10 @@
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="{{ url('/css/style.css') }}">
     @if(Auth::user())
-      @if(!empty(Auth::user()->setting->theme_color) || Auth::user()->setting->theme_color == 'default')
-    <link rel="stylesheet" href="/css/customtheme/style_custom_{{ Auth::user()->setting->theme_color }}mode.css" >
+      @if(!empty(Auth::user()->setting))
+        @if(!(Auth::user()->setting->theme_color == "default"))
+          <link rel="stylesheet" href="/css/customtheme/style_custom_{{ Auth::user()->setting->theme_color }}mode.css">
+        @endif
       @endif
     @endif
     <link rel="shortcut icon" href="{{ url('/images/favicon.png?3') }}">
@@ -196,8 +198,10 @@
 
     <script src="{{ url('/js/main.js') }}"></script>
     @if(Auth::user())
-      @if(!empty(Auth::user()->setting->theme_color) || Auth::user()->setting->theme_color == 'default')
-    <script src="/js/customtheme/{{ Auth::user()->setting->theme_color }}_mode.js"></script>
+      @if(!empty(Auth::user()->setting))
+        @if(!(Auth::user()->setting->theme_color == "default"))
+          <script src="/js/customtheme/{{ Auth::user()->setting->theme_color }}_mode.js"></script>
+        @endif
       @endif  
     @endif 
   </body>
