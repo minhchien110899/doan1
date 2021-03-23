@@ -23,9 +23,9 @@
      {{-- <script src="{{ url('/js/jquery-3.3.1.min.js') }}"></script> --}}
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="{{ url('/css/style.css') }}">
-    <!-- <link rel="stylesheet" href="{{url('/css/style_custom_blackmode.css')}}" > -->
+    <link rel="stylesheet" href="{{url('/css/customtheme/style_custom_blackmode.css')}}" >
     <link rel="shortcut icon" href="{{ url('/images/favicon.png?3') }}">
-
+   
   </head>
 
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -191,7 +191,7 @@
     <script src="{{ url('/js/aos.js') }}"></script>
 
     <script src="{{ url('/js/main.js') }}"></script>
-    <!-- <script src="{{ url('/js/black_mode.js') }}"></script>   -->
+    <script src="{{ url('/js/customtheme/black_mode.js') }}"></script> 
   </body>
 
 </html>

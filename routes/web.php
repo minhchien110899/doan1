@@ -44,6 +44,10 @@ Route::group(['prefix' => 'chat', 'namespace' => 'user'], function () {
 	Route::get('/conversation/{id}', 'ChatController@getConversation');
 	Route::post('/conversation/send',  'ChatController@send');
 });
+// lộ trình học cá nhân
+Route::group(['prefix' => 'personalizeElearning', 'namespace' => 'user'], function(){
+	Route::get('/', 'PersonalizeController@index');
+});
 
 Route::group(['prefix' => 'admin','namespace' => 'admin'], function(){
 	Route::get('/login','AdminLoginController@login')->name('admin.login');

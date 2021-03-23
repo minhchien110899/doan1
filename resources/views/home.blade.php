@@ -8,7 +8,7 @@
                     <a href="/profile"><h3>Quản lý thông tin cá nhân</h3></a>
                     <a href="/exam"><h3>Xem đề thi</h3></a>
                     <a href="/exam/result"><h3>Xem lịch sử thi</h3></a>
-               
+                    <a href="/personalizeElearning"><h3>Tạo mục tiêu cá nhân</h3></a>
             </div>
         </div>
     </div>
