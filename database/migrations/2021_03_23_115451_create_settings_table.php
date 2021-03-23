@@ -15,7 +15,8 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->text('theme_color')->default('default');
+            $table->string('theme_color');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
