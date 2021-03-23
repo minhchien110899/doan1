@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="{{ url('/fonts/icomoon/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-
+    <link rel="stylesheet" href="{{ url('/css/w3school.css') }}">
     <link rel="stylesheet" href="{{ url('/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url('/css/bootstrap-datepicker.css') }}">
     <link rel="stylesheet" href="{{ url('/css/jquery.fancybox.min.css') }}">
@@ -20,10 +20,14 @@
     <link rel="stylesheet" href="{{ url('/fonts/flaticon/font/flaticon.css') }}">
     <link rel="stylesheet" href="{{ url('/css/aos.css') }}">
 
-     {{-- <script src="{{ url('/js/jquery-3.3.1.min.js') }}"></script> --}}
+
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="{{ url('/css/style.css') }}">
-    <link rel="stylesheet" href="{{url('/css/customtheme/style_custom_blackmode.css')}}" >
+    @if(Auth::user())
+      @if(!empty(Auth::user()->setting->theme_color) || Auth::user()->setting->theme_color == 'default')
+    <link rel="stylesheet" href="/css/customtheme/style_custom_{{ Auth::user()->setting->theme_color }}mode.css" >
+      @endif
+    @endif
     <link rel="shortcut icon" href="{{ url('/images/favicon.png?3') }}">
    
   </head>
@@ -191,7 +195,11 @@
     <script src="{{ url('/js/aos.js') }}"></script>
 
     <script src="{{ url('/js/main.js') }}"></script>
-    <script src="{{ url('/js/customtheme/black_mode.js') }}"></script> 
+    @if(Auth::user())
+      @if(!empty(Auth::user()->setting->theme_color) || Auth::user()->setting->theme_color == 'default')
+    <script src="/js/customtheme/{{ Auth::user()->setting->theme_color }}_mode.js"></script>
+      @endif  
+    @endif 
   </body>
 
 </html>

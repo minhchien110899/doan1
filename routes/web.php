@@ -49,6 +49,12 @@ Route::group(['prefix' => 'personalizeElearning', 'namespace' => 'user'], functi
 	Route::get('/', 'PersonalizeController@index');
 });
 
+//setting user
+Route::group(['prefix' => 'setting', 'namespace' => 'user'], function(){
+	Route::get('/', 'SettingController@index');
+	Route::post('/change_theme_color', 'SettingController@change_theme_color');
+});
+
 Route::group(['prefix' => 'admin','namespace' => 'admin'], function(){
 	Route::get('/login','AdminLoginController@login')->name('admin.login');
 	Route::post('/login','AdminLoginController@postlogin');	

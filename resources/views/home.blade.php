@@ -9,6 +9,7 @@
                     <a href="/exam"><h3>Xem đề thi</h3></a>
                     <a href="/exam/result"><h3>Xem lịch sử thi</h3></a>
                     <a href="/personalizeElearning"><h3>Tạo mục tiêu cá nhân</h3></a>
+                    <a href="/setting"><h3>Cài đặt chung</h3></a>
             </div>
         </div>
     </div>
