@@ -8,7 +8,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans:300,400,700|Indie+Flower" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="{{ url('/fonts/icomoon/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <link rel="stylesheet" href="{{ url('/css/w3school.css') }}">
@@ -99,7 +98,11 @@
                 @else
                  <div class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->username }}
+                                  <?php
+                                  $name = Auth::user()->name;
+                                  $lastname = explode(' ', $name)[-1];
+                                  ?>  
+                                  {{ $lastname }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -107,6 +110,7 @@
                                     <a class="dropdown-item" href="{{ route('user.profile') }}">Thông tin chung</a>
                                     <a class="dropdown-item" href="{{ route('subject') }}">Đề thi</a>
                                     <a class="dropdown-item" href="{{ route('user.result') }}">Kết quả</a>
+                                    <a class="dropdown-item" href="{{ route('user.setting') }}">Cài đặt chung</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

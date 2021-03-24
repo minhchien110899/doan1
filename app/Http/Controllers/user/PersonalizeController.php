@@ -4,6 +4,7 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Subject;
 
 class PersonalizeController extends Controller
 {
@@ -11,6 +12,7 @@ class PersonalizeController extends Controller
     	$this->middleware('auth:web');
     }
     public function index(){
-        return view('user.personalize.index');
+        $subjects = Subject::where('status','=', 1)->get();	
+        return view('user.personalize.index', ['subjects' => $subjects]);
     }
 }

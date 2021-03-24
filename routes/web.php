@@ -51,7 +51,7 @@ Route::group(['prefix' => 'personalizeElearning', 'namespace' => 'user'], functi
 
 //setting user
 Route::group(['prefix' => 'setting', 'namespace' => 'user'], function(){
-	Route::get('/', 'SettingController@index');
+	Route::get('/', 'SettingController@index')->name("user.setting");
 	Route::post('/change_theme_color', 'SettingController@change_theme_color');
 });
 

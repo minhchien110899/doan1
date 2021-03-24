@@ -13,27 +13,27 @@
             @csrf
             <div class="row text-center">
                 <div class="col-sm-6 col-md-4 col-xl-2">
-                    <div class="btn w-100 w3-round-large w3-border" style="background-color:#f8f9fa; ;padding: 10px 11px;">Default</div>
+                    <div class="btn w-100 w3-round-large w3-border" style="background-color:#f8f9fa; ;padding: 10px 11px;" onclick="$('input[value=default]').click();">Default</div>
                     <p><input type="radio" name="theme_color" value="default" @if($theme_color == 'default') checked @endif></p>
                 </div>
                 <div class="col-sm-6 col-md-4 col-xl-2">
-                    <div class="btn w-100 w3-round-large w3-border w3-border-dark-gray" style="background-color: #ffc0cb;">Pink</div>
+                    <div class="btn w-100 w3-round-large w3-border w3-border-dark-gray" style="background-color: #ffc0cb;" onclick="$('input[value=pink]').click();">Pink</div>
                     <p><input type="radio" name="theme_color" value="pink" @if($theme_color == 'pink') checked @endif></p>
                 </div>
                 <div class="col-sm-6 col-md-4 col-xl-2">
-                    <div class="btn w-100 w3-round-large w3-border w3-border-dark-gray" style="background-color: #fbb3ae; padding: 10px 14px;">Salmon</div>
+                    <div class="btn w-100 w3-round-large w3-border w3-border-dark-gray" style="background-color: #fbb3ae; padding: 10px 14px;" onclick="$('input[value=red]').click();">Salmon</div>
                     <p><input type="radio" name="theme_color" value="red" @if($theme_color == 'red') checked @endif></p>
                 </div>
                 <div class="col-sm-6 col-md-4 col-xl-2 ">
-                    <div class="btn w-100 w3-round-large w3-border w3-border-dark-gray" style="background-color: #85e889;">Green</div>
+                    <div class="btn w-100 w3-round-large w3-border w3-border-dark-gray" style="background-color: #85e889;" onclick="$('input[value=green]').click();">Green</div>
                     <p><input type="radio" name="theme_color" value="green" @if($theme_color == 'green') checked @endif></p>
                 </div>
                 <div class="col-sm-6 col-md-4 col-xl-2">
-                    <div class="btn w-100 w3-round-large w3-border w3-border-dark-gray" style="background-color:#7dfbfb;">Blue</div>
+                    <div class="btn w-100 w3-round-large w3-border w3-border-dark-gray" style="background-color:#7dfbfb;" onclick="$('input[value=cyan]').click();">Blue</div>
                     <p><input type="radio" name="theme_color" value="cyan" @if($theme_color == 'cyan') checked @endif></p>
                 </div>
                 <div class="col-sm-6 col-md-4 col-xl-2">
-                    <div class="btn w-100 text-light w3-round-large w3-border" style="background-color: #1c1e21;">Black</div>
+                    <div class="btn w-100 text-light w3-round-large w3-border" style="background-color: #1c1e21;" onclick="$('input[value=black]').click();">Black</div>
                     <p><input type="radio" name="theme_color" value="black"@if($theme_color == 'black') checked @endif></p>
                 </div>
             </div>
