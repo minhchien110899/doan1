@@ -1,8 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
-    <div class="container mt-3" style="height: 600px; ">
-        <h1 class="text-center mb-5">Thông tin chung</h1>
+    <div class="container w3-round-large w3-border" style="height: 800px; ">
+        <h1 class="text-center mb-5 mt-1">Thông tin chung</h1>
         @error('avatar') 
             <div class="alert alert-danger w-50 text-center">
                       {{ $message }}

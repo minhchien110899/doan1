@@ -46,7 +46,7 @@ Route::group(['prefix' => 'chat', 'namespace' => 'user'], function () {
 });
 // lộ trình học cá nhân
 Route::group(['prefix' => 'personalizeElearning', 'namespace' => 'user'], function(){
-	Route::get('/', 'PersonalizeController@index');
+	Route::get('/', 'PersonalizeController@index')->name('user.personalize');
 });
 
 //setting user

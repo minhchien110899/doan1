@@ -88,7 +88,7 @@
                 </ul>
               </nav>
 
-              {{-- <div class="top-social ml-auto">
+              <div class="top-social ml-auto">
                 @guest
                             
                     @if (Route::has('register'))
@@ -99,14 +99,14 @@
                  <div class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                   <?php
-                                  // $name = Auth::user()->name;
-                                  // $lastname = explode(' ', $name);
+                                  $name = Auth::user()->name;
+                                  $lastname = explode(' ', $name);
                                   ?>  
                                   {{ ucwords($lastname[count($lastname) - 1]) }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/home">Home</a>
+                                    {{-- <a class="dropdown-item" href="/home">Home</a> --}}
                                     <a class="dropdown-item" href="{{ route('user.profile') }}">Thông tin chung</a>
                                     <a class="dropdown-item" href="{{ route('subject') }}">Đề thi</a>
                                     <a class="dropdown-item" href="{{ route('user.result') }}">Kết quả</a>
@@ -123,122 +123,69 @@
                                 </div>
                             </div>         
                 @endguest
-              </div> --}}
           </div>
         </div>
-        {{-- content kèm menu dọc --}}
-        <div class="container">
-          <div class="row">
-            <div class="col-9">
-              @include('inc.messages')   
-  
-              @yield('content')
-            </div>
-            <div class="col-3">
-              <a href="{{ route('user.profile') }}" class="text-dark">
-                <div class="w3-hover-shadow w3-padding-24 w3-center mb-1" style="background-color: #f6f5f5;">
-                  Thông tin cá nhân
-                </div>
-              </a>
-              <a href="{{ route('user.personalize') }}" class="text-dark">
-                <div class=" w3-hover-shadow w3-padding-24 w3-center mb-1" style="background-color: #f6f5f5;">
-                  Lộ trình học riêng
-                </div>
-              </a>
-              <a href="{{ route('subject') }}" class="text-dark">
-                <div class=" w3-hover-shadow w3-padding-24 w3-center mb-1" style="background-color: #f6f5f5;">
-                  Làm bài thi
-                </div>
-              </a>
-              <a href="{{ route('user.setting') }}" class="text-dark">
-                <div class=" w3-hover-shadow w3-padding-24 w3-center mb-1" style="background-color: #f6f5f5;">
-                  Cài đặt chung
-                </div>
-              </a>
-              @guest        
-                @if (Route::has('register'))
-                    <a href="/login" class="text-dark">
-                      <div class=" w3-hover-shadow w3-padding-24 w3-center mb-1" style="background-color: #f6f5f5;">
-                        Đăng nhập
-                      </div>
-                    </a>
-                    <a href="/register" class="text-dark">
-                      <div class=" w3-hover-shadow w3-padding-24 w3-center mb-1" style="background-color: #f6f5f5;">
-                        Đăng kí
-                      </div>
-                    </a>
-                @endif
-              @else
-                    <a href="{{ route('logout') }}" class="text-dark" onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">
-                      <div class="w3-hover-shadow w3-padding-24 w3-center mb-1" style="background-color: #f6f5f5;">
-                        Đăng xuất
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                        </form>
-                      </div>
-                    </a>
-              @endguest
-            </div>
-          </div>
-        </div>
-        <footer class="site-footer">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-4">
-                <h2 class="footer-heading mb-3">Giới thiệu</h2>
-                    <p class="mb-5">Trang web giúp bạn tự học tại nhà với những đề thi chọn lọc phù hợp với khả năng của bạn. </p>
-
-                    <h2 class="footer-heading mb-4">Bạn muốn được tư vấn thêm</h2>
-                    <form action="#" class="d-flex" class="subscribe">
-                      <input type="text" class="form-control mr-3" placeholder="Email">
-                      <input type="submit" value="GỬI" class="btn btn-primary">
-                    </form>
-              </div>
-              <div class="col-lg-8 ml-auto">
-                <div class="row justify-content-end">
-                  <!-- <div class="col-lg-4 ml-auto">
-                    <h2 class="footer-heading mb-4">Navigation</h2>
-                    <ul class="list-unstyled">
-                      <li><a href="#">About Us</a></li>
-                      <li><a href="#">Testimonials</a></li>
-                      <li><a href="#">Terms of Service</a></li>
-                      <li><a href="#">Privacy</a></li>
-                      <li><a href="#">Contact Us</a></li>
-                    </ul>
-                  </div> -->
-                  <div class="col-lg-4">
-                    <h2 class="footer-heading mb-4">Tìm hiểu thêm</h2>
-                    <ul class="list-unstyled">
-                      <li><a href="#">Giới thiệu</a></li>
-                      <li><a href="#">Chính sách</a></li>
-                      <li><a href="#">Điều khoản</a></li>
-                      <li><a href="#">Dịch vụ</a></li>
-                      <li><a href="#">Liên hệ</a></li>
-                    </ul>
-                    
-                  </div>
-
-                  
-                  
-                </div>
-              </div>
-            </div>
-            <div class="row pt-5 mt-5 text-center">
-              <div class="col-md-12">
-                <div class="border-top pt-5">
-                  <p>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="#" target="_blank" >MultiChoice</a>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                </p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </footer>
       </div>
+    @include('inc.messages')   
+  
+    @yield('content')
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <h2 class="footer-heading mb-3">Giới thiệu</h2>
+                <p class="mb-5">Trang web giúp bạn tự học tại nhà với những đề thi chọn lọc phù hợp với khả năng của bạn. </p>
+
+                <h2 class="footer-heading mb-4">Bạn muốn được tư vấn thêm</h2>
+                <form action="#" class="d-flex" class="subscribe">
+                  <input type="text" class="form-control mr-3" placeholder="Email">
+                  <input type="submit" value="GỬI" class="btn btn-primary">
+                </form>
+          </div>
+          <div class="col-lg-8 ml-auto">
+            <div class="row justify-content-end">
+              <!-- <div class="col-lg-4 ml-auto">
+                <h2 class="footer-heading mb-4">Navigation</h2>
+                <ul class="list-unstyled">
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Testimonials</a></li>
+                  <li><a href="#">Terms of Service</a></li>
+                  <li><a href="#">Privacy</a></li>
+                  <li><a href="#">Contact Us</a></li>
+                </ul>
+              </div> -->
+              <div class="col-lg-4">
+                <h2 class="footer-heading mb-4">Tìm hiểu thêm</h2>
+                <ul class="list-unstyled">
+                  <li><a href="#">Giới thiệu</a></li>
+                  <li><a href="#">Chính sách</a></li>
+                  <li><a href="#">Điều khoản</a></li>
+                  <li><a href="#">Dịch vụ</a></li>
+                  <li><a href="#">Liên hệ</a></li>
+                </ul>
+                
+              </div>
+
+              
+              
+            </div>
+          </div>
+        </div>
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <div class="border-top pt-5">
+              <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="#" target="_blank" >MultiChoice</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </footer>
+    </div>
      <script src="{{ url('/js/jquery-3.3.1.min.js') }}"></script> 
     <script src="{{ url('/js/jquery-migrate-3.0.0.js') }}"></script>
     <script src="{{ url('/js/popper.min.js') }}"></script>

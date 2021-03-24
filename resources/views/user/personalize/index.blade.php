@@ -1,13 +1,18 @@
+<?php
+    $name = Auth::user()->name;
+    $array_name = explode(' ', $name);
+    $lastname = ucwords($array_name[count($array_name) - 1]);
+?>
 @extends('layouts.main')
 
 @section('content')
-<div class="container w3-round-large w3-border mt-3">
+<div class="container w3-round-large w3-border" style="height:800px">
     <div class="row my-2 text-center">
-        <div class="col"><h3 class="mb-0 font-weight-bold">Lộ trình học của {{ ucwords(Auth::user()->name) }}</h3></div>
+        <div class="col"><h3 class="mb-0 font-weight-bold">Lộ trình học của {{ $lastname }}</h3></div>
     </div>
     <hr class="my-0" style="width: 50%;">
     <div class="row">
-        <div class="col text-center"><p class="mb-0">Chào {{ ucwords(Auth::user()->name) }}!</p><p>Để tạo lộ trình học cho riêng mình thì hệ thống muốn {{ ucwords(Auth::user()->name) }} tham gia một bài kiểm tra để ôn lại kiến thức nha</p></div>
+        <div class="col text-center"><p class="mb-0">Chào {{ $lastname }}!</p><p>Để tạo lộ trình học cho riêng mình thì hệ thống muốn {{ $lastname }} tham gia một bài kiểm tra để ôn lại kiến thức nha</p></div>
     </div>
     <div class="row">
         @if(count($subjects) > 0)

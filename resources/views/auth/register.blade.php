@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.main_nomenu')
 
 @section('content')
 <div class="container mt-5" style="height: 800px; ">

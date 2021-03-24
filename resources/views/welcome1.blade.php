@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.main_nomenu')
 
 @section('content')
 <div class="ftco-blocks-cover-1">
