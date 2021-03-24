@@ -15,7 +15,7 @@
         display.textContent = minutes + ":" + seconds;
 
         if (--timer < 0) {
-            timer = duration;
+            $("button[name=complete]").click();
         }
     }, 1000);
 }
