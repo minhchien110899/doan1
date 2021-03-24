@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-6 text-center">
                     
-                <img src="{{ empty($user->avatar) ? '/image/no_image.jpg' : $user->avatar }}" class="img-thumbnail" width="30%" auto>
+                <img src="{{ empty($user->avatar) ? '/images/no_image.jpg' : $user->avatar }}" class="img-thumbnail" width="30%" auto>
                 <!-- <img src = "{{ secure_asset('/storage/avatar-user', empty($admin->avatar) ? 'no_image.jpg' : $admin->avatar) }}" class="img-thumbnail" width="30%" auto> -->
                 <p><a href="#" data-toggle="modal" data-target="#change_image"> Thay đổi ảnh</a></p>
                 <div class="modal fade" id="change_image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">

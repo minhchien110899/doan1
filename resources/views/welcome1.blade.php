@@ -73,7 +73,7 @@
     </div>
     
     
-    <div class="site-section bg-info">
+    <div class="site-section" style="background: rgba(0, 0, 0, 0.3)">
       <div class="container">
         <div class="row mb-5">
           <div class="col-12 text-center">
