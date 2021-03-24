@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="container" style="height: 600px;">
+<div class="container">
 	<div class="row">
 	@if(count($exams) > 0)
 	@foreach($exams as $exam)	
@@ -10,8 +10,8 @@
 			  <div class="card-body">
 			    <h3 class="card-title">{{ $exam->name }}</h3>
 			    <p class="card-text">{{$exam->description}}</p>	
-			    <a href="{{ url('/exam/make', $exam->id) }}" class="btn btn-primary">Thi thử</a>
-			    <a href="{{ url('/exam/review', $exam->id) }}" class="btn btn-info">Tham khảo</a>
+			    <a href="{{ url('/exam/make', $exam->id) }}" class="btn btn-warning">bắt đầu</a>
+			    {{-- <a href="{{ url('/exam/review', $exam->id) }}" class="btn btn-info">Tham khảo</a> --}}
 			    
 			  </div>
 			</div>
