@@ -107,9 +107,10 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     {{-- <a class="dropdown-item" href="/home">Home</a> --}}
-                                    <a class="dropdown-item" href="{{ route('user.profile') }}">Thông tin chung</a>
-                                    <a class="dropdown-item" href="{{ route('subject') }}">Đề thi</a>
-                                    <a class="dropdown-item" href="{{ route('user.result') }}">Kết quả</a>
+                                    <a class="dropdown-item" href="{{ route('user.profile') }}">Thông tin cá nhân</a>
+                                    <a class="dropdown-item" href="{{ route('user.personalize') }}">Mục tiêu cá nhân</a>
+                                    <a class="dropdown-item" href="{{ route('subject') }}">Làm bài thi</a>
+                                    <a class="dropdown-item" href="{{ route('user.result') }}">Lịch sử</a>
                                     <a class="dropdown-item" href="{{ route('user.setting') }}">Cài đặt chung</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

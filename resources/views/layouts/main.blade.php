@@ -142,12 +142,17 @@
               </a>
               <a href="{{ route('user.personalize') }}" class="text-dark">
                 <div class=" w3-hover-shadow w3-padding-24 w3-center mb-1" style="background-color: #f6f5f5;">
-                  Lộ trình học riêng
+                  Mục tiêu cá nhân
                 </div>
               </a>
               <a href="{{ route('subject') }}" class="text-dark">
                 <div class=" w3-hover-shadow w3-padding-24 w3-center mb-1" style="background-color: #f6f5f5;">
                   Làm bài thi
+                </div>
+              </a>
+              <a href="{{ route('user.result') }}" class="text-dark">
+                <div class=" w3-hover-shadow w3-padding-24 w3-center mb-1" style="background-color: #f6f5f5;">
+                  Lịch sử
                 </div>
               </a>
               <a href="{{ route('user.setting') }}" class="text-dark">
