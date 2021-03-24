@@ -1,6 +1,31 @@
 @extends('layouts.main')
 
 @section('content')
+<button class="btn time_exam btn-warning px-0" id="time" >30:00</button>
+<script>
+	function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    var thirtyMinutes = 60 * 30,
+        display = document.querySelector('#time');
+    startTimer(thirtyMinutes, display);
+};
+</script>
 <div class="container" style="margin-bottom: 40px">
 	<div class="card">
 	<div class="card-header text-center pb-0">
