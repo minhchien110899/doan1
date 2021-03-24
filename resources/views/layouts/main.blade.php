@@ -62,7 +62,7 @@
               </div>
               <div class="d-flex site-info align-items-center">
                 <span class="block-icon mr-3"><span class="icon-clock-o"></span></span>
-                <span class="text-black">Work all day 6:30AM - 9:00PM <br> No OFF day </span>
+                <span class="text-black">Work all day - Service 24/7<br> No OFF day </span>
               </div>
               
             </div>

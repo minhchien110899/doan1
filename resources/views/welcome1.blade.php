@@ -77,7 +77,7 @@
       <div class="container">
         <div class="row mb-5">
           <div class="col-12 text-center">
-            <span class="text-cursive h5 text-red d-block">Packages You Like</span>
+            <span class="text-cursive text-red d-block" style="font-size: 50px">Packages You Like</span>
             <h2 class="text-white">Dịch vụ</h2>
           </div>
         </div>
