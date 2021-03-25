@@ -22,6 +22,11 @@ Route::post('/logout', 'Auth\LoginController@userLogout')->name('logout');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('auth/google', 'Auth\GoogleController@redirectToGoogle');
 Route::get('auth/google/callback', 'Auth\GoogleController@handleGoogleCallback');
+//clear cache
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    return "Cache is cleared";
+});
 // route profile
 Route::group(['prefix' => 'profile', 'namespace' => 'user'], function(){
 	Route::get('/', 'ProfileUserController@index')->name('user.profile');

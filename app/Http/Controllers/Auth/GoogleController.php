@@ -34,7 +34,7 @@ class GoogleController extends Controller
      
                 Auth::login($finduser);
     
-                return redirect('/home');
+                return redirect('/profile');
      
             }else{
                 $newUser = User::create([
@@ -51,7 +51,7 @@ class GoogleController extends Controller
             }
     
         } catch (Exception $e) {
-            dd($e->getMessage());
+            return redirect('/login')->with('error', 'Mail này đã được đăng kí. Xin vui lòng thử lại');
         }
     }
 }
