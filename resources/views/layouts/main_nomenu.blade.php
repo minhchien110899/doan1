@@ -96,33 +96,31 @@
                         <a href="/register">Đăng kí</a>
                     @endif
                 @else
-                 <div class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                  <?php
-                                  $name = Auth::user()->name;
-                                  $lastname = explode(' ', $name);
-                                  ?>  
-                                  {{ ucwords($lastname[count($lastname) - 1]) }}
-                                </a>
+                  <div class="dropdown-menu-user">
+                    <button class="dropbtn">
+                      <?php
+                        $name = Auth::user()->name;
+                        $lastname = explode(' ', $name);
+                      ?>  
+                        {{ ucwords($lastname[count($lastname) - 1]) }}<i class="fas fa-sort-down ml-2" style="font-size: 20px"></i>
+                    </button>
+                    <div class="dropdown-contentt">
+                      <a href="{{ route('user.profile') }}">Thông tin cá nhân</a>
+                      <a href="{{ route('user.personalize') }}">Mục tiêu cá nhân</a>
+                      <a href="{{ route('subject') }}">Làm bài thi</a>
+                      <a href="{{ route('user.result') }}">Lịch sử</a>
+                      <a href="{{ route('user.setting') }}">Cài đặt chung</a>
+                      <a href="{{ route('logout') }}"
+                          onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                          {{ __('Đăng xuất') }}
+                      </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    {{-- <a class="dropdown-item" href="/home">Home</a> --}}
-                                    <a class="dropdown-item" href="{{ route('user.profile') }}">Thông tin cá nhân</a>
-                                    <a class="dropdown-item" href="{{ route('user.personalize') }}">Mục tiêu cá nhân</a>
-                                    <a class="dropdown-item" href="{{ route('subject') }}">Làm bài thi</a>
-                                    <a class="dropdown-item" href="{{ route('user.result') }}">Lịch sử</a>
-                                    <a class="dropdown-item" href="{{ route('user.setting') }}">Cài đặt chung</a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Đăng xuất') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </div>         
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                          @csrf
+                      </form>
+                    </div>
+                  </div>
                 @endguest
           </div>
         </div>
