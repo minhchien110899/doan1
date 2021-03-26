@@ -1932,6 +1932,7 @@ h1, h2, h3, h4, h5,
 .dropdown-contentt {
   display: none;
   position: absolute;
+  right: -45px;
   background-color: #f1f1f1;
   min-width: 200px;
   z-index: 3000;
