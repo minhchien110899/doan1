@@ -76,15 +76,15 @@
 
               
 
-              <nav class="site-navigation text-left mr-auto d-none d-lg-block " role="navigation">
-                <ul class="site-menu main-menu js-clone-nav mr-auto ">
+              <nav class="site-navigation text-center d-none d-lg-block " role="navigation">
+                <ul class="site-menu main-menu js-clone-nav">
                   <li><a href="/" class="nav-link">Trang Chủ</a></li>
                   <li><a href="/" class="nav-link">Giới thiệu</a></li>
                   <li><a href="/" class="nav-link">Tham khảo</a></li>
                   <li><a href="/" class="nav-link">Công tác</a></li>
                   <li><a href="/" class="nav-link">Dịch vụ</a></li>
                   <li><a href="/" class="nav-link">Liên hệ</a></li>
-                  <li><a href="/chat" class="nav-link">Chat</a></li>
+                  {{-- <li><a href="/chat" class="nav-link">Chat</a></li> --}}
                 </ul>
               </nav>
 
