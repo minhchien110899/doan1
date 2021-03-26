@@ -51,6 +51,8 @@ class GoogleController extends Controller
             }
     
         } catch (Exception $e) {
+            session_start();
+            session_destroy();
             return redirect('/login')->with('error', 'Mail này đã được đăng kí. Xin vui lòng thử lại');
         }
     }

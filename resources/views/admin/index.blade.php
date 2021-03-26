@@ -23,7 +23,7 @@
                       <h6 class="mb-0">Tổng đề thi</h6><span class="text-gray">{{ $count_testexam }}</span>
                     </div>
                   </div>
-                  <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
+                  <div class="icon text-white bg-green"><i class="fab fa-algolia"></i></div>
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
@@ -34,7 +34,7 @@
                       <h6 class="mb-0">Dữ liệu tốn</h6><span class="text-gray">135 MB</span>
                     </div>
                   </div>
-                  <div class="icon text-white bg-blue"><i class="fa fa-dolly-flatbed"></i></div>
+                  <div class="icon text-white bg-blue"><i class="fa fa-database" aria-hidden="true"></i></div>
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
@@ -45,7 +45,7 @@
                       <h6 class="mb-0">Tổng số môn</h6><span class="text-gray">{{ $count_subject }}</span>
                     </div>
                   </div>
-                  <div class="icon text-white bg-red"><i class="fas fa-receipt"></i></div>
+                  <div class="icon text-white bg-red"><i class="fas fa-book"></i></div>
                 </div>
               </div>
             </div>

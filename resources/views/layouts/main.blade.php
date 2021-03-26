@@ -137,27 +137,27 @@
             <div class="col-3">
               <a href="{{ route('user.profile') }}" class="text-dark">
                 <div class="w3-hover-shadow w3-padding-24 w3-center mb-1" style="background-color: #f6f5f5;">
-                  Thông tin cá nhân
+                  <i class="far fa-address-book ml-3 mt-2 float-left"></i>Thông tin cá nhân
                 </div>
               </a>
               <a href="{{ route('user.personalize') }}" class="text-dark">
                 <div class=" w3-hover-shadow w3-padding-24 w3-center mb-1" style="background-color: #f6f5f5;">
-                  Mục tiêu cá nhân
+                  <i class="fas fa-medal ml-3 mt-2 float-left"></i>Mục tiêu cá nhân
                 </div>
               </a>
               <a href="{{ route('subject') }}" class="text-dark">
                 <div class=" w3-hover-shadow w3-padding-24 w3-center mb-1" style="background-color: #f6f5f5;">
-                  Làm bài thi
+                  <i class="far fa-file-alt ml-3 mt-2 float-left"></i>Làm bài thi
                 </div>
               </a>
               <a href="{{ route('user.result') }}" class="text-dark">
                 <div class=" w3-hover-shadow w3-padding-24 w3-center mb-1" style="background-color: #f6f5f5;">
-                  Lịch sử
+                  <i class="fas fa-history ml-3 mt-2 float-left"></i>Lịch sử
                 </div>
               </a>
               <a href="{{ route('user.setting') }}" class="text-dark">
                 <div class=" w3-hover-shadow w3-padding-24 w3-center mb-1" style="background-color: #f6f5f5;">
-                  Cài đặt chung
+                  <i class="fas fa-cog ml-3 mt-2 float-left"></i>Cài đặt chung
                 </div>
               </a>
               @guest        
@@ -177,7 +177,7 @@
                     <a href="{{ route('logout') }}" class="text-dark" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                       <div class="w3-hover-shadow w3-padding-24 w3-center mb-1" style="background-color: #f6f5f5;">
-                        Đăng xuất
+                        <i class="fas fa-sign-out-alt ml-3 mt-2 float-left"></i>Đăng xuất
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                         </form>

@@ -60,7 +60,7 @@
 
             <div class="col-6">
                 <p><span class="font-weight-bold">Họ và tên: </span> {{ $user->name }}</p>
-                <p><span class="font-weight-bold">Email: </span> {{ $user->email }}</p>
+                <p class="overflow-hidden"><span class="font-weight-bold">Email: </span> {{ $user->email }}</p>
                 <p><span class="font-weight-bold">Tuổi: </span> {!! $user->age ?? '<small class="font-size-10 font-italic">(Chưa cung cấp)</small>' !!}</p>
                 <p><span class="font-weight-bold">Điện thoại: </span>{!! $user->phone ?? '<small class="font-size-10 font-italic">(Chưa cung cấp)</small>' !!}</p>
                 <p><span class="font-weight-bold">Địa chỉ: </span>{!! $user->address ?? '<small class="font-size-10 font-italic">(Chưa cung cấp)</small>' !!}</p>
