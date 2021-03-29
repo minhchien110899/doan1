@@ -198,7 +198,29 @@
      <script src="{{ url('/js/jquery.easing.1.3.js') }}"></script>
      <script src="{{ url('/js/bootstrap-datepicker.min.js') }}"></script> 
     <script src="{{ url('/js/aos.js') }}"></script>
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    @if(session("login_success"))
+    <script>
+        var toastMixin = Swal.mixin({
+          toast: true,
+          icon: 'success',
+          title: 'General Title',
+          animation: false,
+          position: 'top-left',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        });
+        toastMixin.fire({
+          animation: true,
+          title: 'Signed in Successfully'
+        }); 
+    </script>
+    @endif
     <div id="fb-root"></div>
     <script>
       window.fbAsyncInit = function() {
