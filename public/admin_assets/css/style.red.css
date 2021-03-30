@@ -4189,3 +4189,6 @@ code {
 .dropdown-item.disabled, .dropdown-item:disabled {
   color: #6c757d;
 }
+.no-border-radius{
+  border-radius: 5px !important;
+}

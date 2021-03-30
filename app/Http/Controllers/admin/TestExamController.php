@@ -15,7 +15,7 @@ class TestExamController extends Controller
     }
 
     public function index(){
-    	$testexams = TestExam::withCount('question')->orderBy('subject_id','asc')->paginate(5);
+    	$testexams = TestExam::withCount('question')->orderBy('subject_id','asc')->paginate(15);
     	$trash_testexams = TestExam::onlyTrashed()->get();
         $subjects = Subject::all(); 
     	return view('admin.testexam', ['testexams' => $testexams, 'trash_testexams' => $trash_testexams, 'subjects' => $subjects]);
@@ -49,7 +49,8 @@ class TestExamController extends Controller
         TestExam::firstOrCreate([
             'name' => $request->input('name'),
             'subject_id' => $request->input('subject_id'),
-            'description' => $request->input('description'),    
+            'description' => $request->input('description'),
+            'level' => $request->input('level'),    
         ]);
         return redirect()->back();
     }

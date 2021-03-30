@@ -14,67 +14,15 @@ class QuestionController extends Controller
     public function __construct(){
     	$this->middleware('auth:admin');
     }
-
-    // public function index(Request $request)
-    // {
-    // 	$questions = Question::orderBy('testexam_id','asc')->get();
-    //     $trash_questions = Question::onlyTrashed()->get();
-    //     $testexams = TestExam::orderBy('subject_id','asc')->get();
-    // 	if(!empty($request->query('ex'))):
-    // 		$testexam_id = $request->query('ex');
-    // 		$questions = Question::where('testexam_id','=', $testexam_id)->get();
-    // 		return view('admin.question',['questions' => $questions,'request' => $request, 'testexams' => $testexams, 'trash_questions' =>$trash_questions]);
-    // 	else:
-    // 		return view('admin.question',['questions' => $questions, 'request' => $request, 'testexams' => $testexams, 'trash_questions' =>$trash_questions]);
-    // 	endif;	
-    // }
-
-    // public function add_question(Request $request){
-    //     $request->validate(['testexam_id' =>'required']);
-    //     $question = Question::firstOrCreate([
-    //         'content' => $request->input('content'), 
-    //         'testexam_id' =>$request->input('testexam_id'),
-    //     ]);
-    //     $question = Question::where([['content', $request->input('content')],['testexam_id', $request->input('testexam_id')]])->first();
-    //     $question_id = $question->id;
-    //     $option = new Option;
-    //     $option->name = $request->name_option;
-    //     $option->question_id = $question_id;
-    //     if($request->input('answer') == 'option1'):
-    //         $option->answer = $request->name_option[0];
-    //     elseif($request->input('answer') == 'option2'):
-    //         $option->answer = $request->name_option[1];
-    //     elseif($request->input('answer') == 'option3'):
-    //         $option->answer = $request->name_option[2];
-    //     else:
-    //         $option->answer = $request->name_option[3];     
-    //     endif;
-
-    //     $option->save();   
-    //     return redirect()->back();
-    // }
-
-    // public function change_content(Request $request, $id){
-    //     $question = Question::find($id);
-    //     $question->content = $request->input('content');
-    //     $question->save();
-    //     return redirect()->back();
-    // }
-
-    // public function del_question($id){
-    //     $question = Question::find($id)->delete();
-    //     return redirect()->back();
-    // }
-
-    // public function restore_trash($id){
-    //     $subject = Question::onlyTrashed()->where('id', $id)->restore();
-    //     return redirect()->back();
-    // }
-    public function index(){
-        $subjects = Subject::all();
+    public function index(Request $request){
+        if(!empty($request->subject_id) &&  $request->subject_id != 'all'):
+            $subjects = Subject::where('id', $request->subject_id)->get();
+        else:
+            $subjects = Subject::all();    
+        endif;    
         $chapters = Chapter::all();
         $trash_questions = Question::onlyTrashed()->get();
-        return view('admin.question', ['subjects' => $subjects, 'chapters' => $chapters, 'trash_questions' => $trash_questions]);
+        return view('admin.question', ['subjects' => $subjects,'subjects_template' => Subject::all() , 'chapters' => $chapters, 'trash_questions' => $trash_questions, 'req_subject' => $request->subject_id]);
     }
     public function change_content(Request $request ,$id){
         $question = Question::find($id);

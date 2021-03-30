@@ -43,4 +43,7 @@ class User extends Authenticatable
     public function setting(){
         return $this->hasOne('App\Setting');
     }
+    public function personalize(){
+        return $this->hasMany('App\Personalize');
+    }
 }
