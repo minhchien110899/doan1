@@ -118,3 +118,10 @@ Route::group(['prefix' => 'admin','namespace' => 'admin'], function(){
 });
 
 Route::get('/admin/test', 'TestController@checkcountdown');
+
+Route::group(['prefix' => 'inspector','namespace' => 'inspector'], function(){
+	Route::get('/', 'InspectorController@index')->name('inspector.index');
+	Route::get('/login', 'InspectorLoginController@login')->name('inspector.login');
+	Route::post('/login','InspectorLoginController@postlogin');
+	Route::get('/logout','InspectorLoginController@logout')->name('inspector.logout');	
+});
