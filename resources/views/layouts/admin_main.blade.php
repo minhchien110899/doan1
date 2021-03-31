@@ -84,16 +84,18 @@
         <div class="text-gray-400 text-uppercase px-3 px-lg-4 py-4 font-weight-bold small headings-font-family">MAIN</div>
         <ul class="sidebar-menu list-unstyled">
               <li class="sidebar-list-item"><a href="{{ route('admin.index') }}" class="sidebar-link text-muted "><i class="o-home-1 mr-3 text-gray"></i><span>Home</span></a></li>
-              <li class="sidebar-list-item"><a href="{{ route('admin.subject') }}" class="sidebar-link text-muted"><i class="o-wireframe-1 mr-3 text-gray"></i><span>Môn học</span></a></li>
-              <li class="sidebar-list-item"><a href="{{route('admin.testexam')}}" class="sidebar-link text-muted"><i class="o-paperwork-1 mr-3 text-gray"></i><span>Bài thi</span></a></li>
-              <li class="sidebar-list-item"><a href="{{route('admin.question')}}" class="sidebar-link text-muted"><i class="o-survey-1 mr-3 text-gray"></i><span>Câu hỏi</span></a></li>
-              <li class="sidebar-list-item"><a href="{{route('admin.profile')}}" class="sidebar-link text-muted"><i class="o-profile-1 mr-3 text-gray"></i><span>Thông tin chung</span></a></li>
+              <li class="sidebar-list-item"><a href="{{route('admin.inspector')}}" class="sidebar-link text-muted mb-2"><i class="fas fa-user-shield mr-3 text-gray" style="font-size: 19.5px"></i><span>Hỗ trợ viên</span></a></li>
+              <li class="sidebar-list-item"><a href="#" class="sidebar-link text-muted"><i class="fas fa-users mr-3 text-gray" style="font-size: 19.5px"></i><span>Thí sinh</span></a></li>
+              <li class="sidebar-list-item"><a href="{{route('admin.profile')}}" class="sidebar-link text-muted mb-1"><i class="o-profile-1 mr-3 text-gray"></i><span>Thông tin chung</span></a></li>
         </ul>
         <div class="text-gray-400 text-uppercase px-3 px-lg-4 py-4 font-weight-bold small headings-font-family">EXTRAS</div>
         <ul class="sidebar-menu list-unstyled">
-              <li class="sidebar-list-item"><a href="#" class="sidebar-link text-muted"><i class="o-database-1 mr-3 text-gray"></i><span>Demo</span></a></li>
+              <li class="sidebar-list-item"><a href="{{ route('admin.subject') }}" class="sidebar-link text-muted"><i class="o-wireframe-1 mr-3 text-gray"></i><span>Môn học</span></a></li>
+              <li class="sidebar-list-item"><a href="{{route('admin.testexam')}}" class="sidebar-link text-muted"><i class="o-paperwork-1 mr-3 text-gray"></i><span>Bài thi</span></a></li>
+              <li class="sidebar-list-item"><a href="{{route('admin.question')}}" class="sidebar-link text-muted"><i class="o-survey-1 mr-3 text-gray"></i><span>Câu hỏi</span></a></li>
+              {{-- <li class="sidebar-list-item"><a href="#" class="sidebar-link text-muted"><i class="o-database-1 mr-3 text-gray"></i><span>Demo</span></a></li>
               <li class="sidebar-list-item"><a href="#" class="sidebar-link text-muted"><i class="o-imac-screen-1 mr-3 text-gray"></i><span>Demo</span></a></li>
-              <li class="sidebar-list-item"><a href="#" class="sidebar-link text-muted"><i class="o-paperwork-1 mr-3 text-gray"></i><span>Demo</span></a></li>
+              <li class="sidebar-list-item"><a href="#" class="sidebar-link text-muted"><i class="o-paperwork-1 mr-3 text-gray"></i><span>Demo</span></a></li> --}}
               <!-- <li class="sidebar-list-item"><a href="#" class="sidebar-link text-muted"><i class="o-wireframe-1 mr-3 text-gray"></i><span>Demo</span></a></li -->
         </ul>
       </div>

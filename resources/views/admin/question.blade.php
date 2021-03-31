@@ -8,7 +8,7 @@
                     <div class="card-header">
                         <div class="container">
                             <div class="row justify-content-end">
-                                
+
                                 <div class="col-8 col-sm-8 col-lg-6 text-center">
                                     <h4 class="text-uppercase mb-0">Ngân hàng câu hỏi</h4>
                                 </div>
@@ -22,7 +22,8 @@
                                                 <option value="all">Theo môn học - all</option>
                                                 @if (count($subjects_template) > 0)
                                                     @foreach ($subjects_template as $key => $subject)
-                                                        <option value="{{ $subject->id }}" @if($subject->id == $req_subject) {{ 'selected' }} @endif>{{ $subject->name }}
+                                                        <option value="{{ $subject->id }}" @if ($subject->id == $req_subject) {{ 'selected' }} @endif>
+                                                            {{ $subject->name }}
                                                         </option>
                                                     @endforeach
                                                 @endif
@@ -37,80 +38,6 @@
                                     {{-- <a href="#" class="btn btn-outline-dark btn-sm mx-0 mt-2" data-toggle="modal"
                                         data-target="#trash_question">Rác</a> --}}
 
-                                    <!-- modal của thêm câu hỏi-->
-                                    <div class="modal fade" id="add_question" tabindex="-1" role="dialog"
-                                        aria-labelledby="exampleModalLabel3" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-body text-left">
-                                                    <form action="{{ url('/admin/question/add_question') }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        <label class="mb-0 pl-2">Thuộc Chương:</label>
-                                                        <select name="chapter_id" class="form-control mb-2">
-                                                            <option>
-                                                                <p>-Chọn chương:</p>
-                                                            </option>
-                                                            @if (count($chapters) > 0)
-                                                                @foreach ($chapters as $key => $chapter)
-                                                                    <option value="{{ $chapter->id }}">
-                                                                        {{ $chapter->name }}
-                                                                        - {{ $chapter->subject->name }}</option>
-                                                                @endforeach
-                                                            @endif
-                                                        </select>
-                                                        <label class="mb-0 pl-2">Câu hỏi:</label>
-                                                        <input type="text" class="form-control mb-2" name="content" required
-                                                            placeholder="Nhập câu hỏi....">
-                                                        <div class="container">
-                                                            <div class="row">
-                                                                <div class="col-6">
-                                                                    <input type="text" name="name[]"
-                                                                        placeholder="Option 1...." class="form-control my-1"
-                                                                        required>
-                                                                    <input type="text" name="name[]"
-                                                                        placeholder="Option 2...." class="form-control my-1"
-                                                                        required>
-                                                                    <input type="text" name="name[]"
-                                                                        placeholder="Option 3...." class="form-control my-1"
-                                                                        required>
-                                                                    <input type="text" name="name[]"
-                                                                        placeholder="Option 4...." class="form-control my-1"
-                                                                        required>
-                                                                </div>
-                                                                <div class="col-6">
-                                                                    <div class="form-check mt-3 mb-2">
-                                                                        <input type="radio" name="answer" value="option1">
-                                                                        <label>Option 1 đúng</label>
-                                                                    </div>
-                                                                    <div class="form-check mt-2 mb-1">
-                                                                        <input type="radio" name="answer" value="option2">
-                                                                        <label>Option 2 đúng</label>
-                                                                    </div>
-                                                                    <div class="form-check  mt-2 mb-1">
-                                                                        <input type="radio" name="answer" value="option3">
-                                                                        <label>Option 3 đúng</label>
-                                                                    </div>
-                                                                    <div class="form-check my-2">
-                                                                        <input type="radio" name="answer" value="option4">
-                                                                        <label>Option 4 đúng</label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-primary btn-sm"
-                                                        name="add">Lưu</button>
-                                                    </form>
-                                                    <a href='#' class="btn btn-secondary btn-sm"
-                                                        data-dismiss="modal">Đóng</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- </div> -->
-                                    <!-- kết thúc modal của thêm câu hỏi -->
 
                                     <!-- modal của thư mục rác-->
                                     <div class="modal fade" id="trash_question" tabindex="-1" role="dialog"
@@ -189,8 +116,85 @@
                                     <h5 class="text-uppercase">{{ $subject->name }}</h5>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <h1 class="btn btn-success no-border-radius btn-sm p-2"><i
-                                            class="fas fa-plus mr-1"></i>Câu hỏi</h1>
+                                    <a href="#" data-toggle="modal" data-target="#add_question{{ $key }}">
+                                        <h1 class="btn btn-success no-border-radius btn-sm p-2"><i
+                                                class="fas fa-plus mr-1"></i>Câu hỏi</h1>
+                                    </a>
+                                    <!-- modal của thêm câu hỏi-->
+                                    <div class="modal fade" id="add_question{{ $key }}" tabindex="-1" role="dialog"
+                                        aria-labelledby="exampleModalLabel3" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-body text-left">
+                                                    <h5 class="text-center">Môn: {{ $subject->name }}</h5>
+                                                    <form action="{{ url('/admin/question/add_question') }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        <label class="mb-0 pl-2">Thuộc Chương:</label>
+                                                        <select name="chapter_id" class="form-control mb-2">
+                                                            <option>
+                                                                <p>-Chọn chương:</p>
+                                                            </option>
+                                                            @if ($subject->chapter)
+                                                                @foreach ($subject->chapter as $key => $chapterVal)
+                                                                    <option value="{{ $chapterVal->id }}">
+                                                                        {{ $chapterVal->name }} - {{ $chapterVal->subject->name}}
+                                                                    </option>
+                                                                @endforeach
+                                                            @endif
+                                                        </select>
+                                                        <label class="mb-0 pl-2">Câu hỏi:</label>
+                                                        <input type="text" class="form-control mb-2" name="content" required
+                                                            placeholder="Nhập câu hỏi....">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    <input type="text" name="name[]"
+                                                                        placeholder="Option 1...." class="form-control my-1"
+                                                                        required>
+                                                                    <input type="text" name="name[]"
+                                                                        placeholder="Option 2...." class="form-control my-1"
+                                                                        required>
+                                                                    <input type="text" name="name[]"
+                                                                        placeholder="Option 3...." class="form-control my-1"
+                                                                        required>
+                                                                    <input type="text" name="name[]"
+                                                                        placeholder="Option 4...." class="form-control my-1"
+                                                                        required>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <div class="form-check mt-3 mb-2">
+                                                                        <input type="radio" name="answer" value="option1">
+                                                                        <label>Option 1 đúng</label>
+                                                                    </div>
+                                                                    <div class="form-check mt-2 mb-1">
+                                                                        <input type="radio" name="answer" value="option2">
+                                                                        <label>Option 2 đúng</label>
+                                                                    </div>
+                                                                    <div class="form-check  mt-2 mb-1">
+                                                                        <input type="radio" name="answer" value="option3">
+                                                                        <label>Option 3 đúng</label>
+                                                                    </div>
+                                                                    <div class="form-check my-2">
+                                                                        <input type="radio" name="answer" value="option4">
+                                                                        <label>Option 4 đúng</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary btn-sm"
+                                                        name="add">Lưu</button>
+                                                    </form>
+                                                    <a href='#' class="btn btn-secondary btn-sm"
+                                                        data-dismiss="modal">Đóng</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- </div> -->
+                                    <!-- kết thúc modal của thêm câu hỏi -->
                                 </div>
                             </div>
                             @foreach ($subject->chapter as $key1 => $chapter)
@@ -205,8 +209,12 @@
                                     <tbody>
                                         @foreach ($chapter->question as $key2 => $question)
                                             <tr data-toggle="collapse"
-                                                data-target="#demo{{ $key1 }}-{{ $key2 }}"
+                                                data-target="#demo{{ $key }}-{{ $key1 }}-{{ $key2 }}"
                                                 class="accordion-toggle">
+                                                <?php
+                                                    $stt = $key2 + 1;
+                                                ?>
+                                                <td class="text-center font-weight-bold">#{{$stt}}</td>
                                                 <td style="width:90%">{{ $question->content }}</td>
                                                 <td class="text-center">
                                                     <a href="#" class="mr-2 text-dark" data-toggle="modal"
@@ -301,7 +309,7 @@
                                             <tr>
                                                 <td colspan="12">
                                                     <div class="accordian-body collapse"
-                                                        id="demo{{ $key1 }}-{{ $key2 }}">
+                                                        id="demo{{ $key }}-{{ $key1 }}-{{ $key2 }}">
                                                         <table class="container">
                                                             <tbody>
                                                                 @foreach ($question->option->name as $key3 => $option)
