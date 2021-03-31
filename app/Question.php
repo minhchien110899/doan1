@@ -10,7 +10,7 @@ class Question extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'content','chapter_id',
+        'content','chapter_id', 'level'
     ];
 
     public function testexam(){

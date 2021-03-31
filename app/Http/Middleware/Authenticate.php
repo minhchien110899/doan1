@@ -18,6 +18,10 @@ class Authenticate extends Middleware
             return route('login');
         }
 
+        if(!Auth::guard('inspector')->check()){
+            return route('inspector.login');
+        }
+
         if(!Auth::guard('admin')->check()){
             return route('admin.login');
         }

@@ -25,9 +25,11 @@ class RedirectIfAuthenticated
         if ($guard === 'admin' && Auth::guard($guard)->check()) {
             return redirect('/admin');
         } 
-        
+        if ($guard === 'inspector' && Auth::guard($guard)->check()) {
+            return redirect('/inspector');
+        } 
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+            return redirect('/');
         }
 
         return $next($request);
