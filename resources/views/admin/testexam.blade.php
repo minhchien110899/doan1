@@ -58,7 +58,8 @@
                                                         placeholder="Miêu tả....">
                                                     <label class="mb-0 pl-2 text-left">Mức độ:</label>
                                                     <?php $level = [
-                                                    '4' => 'Chung',
+                                                    'null' => 'Đề mẫu',    
+                                                    '4' => 'KTĐV',
                                                     '1' => 'Dễ',
                                                     '2' => 'Bình
                                                     thường',
@@ -152,13 +153,13 @@
                                                     {{ date('d-m-Y', strtotime($testexam->created_at)) }}</small></td>
                                             <td>
                                                 <a href="/admin/testexam/{{ $testexam->id }}/review"
-                                                    class="text-dark mr-2"><i class="fas fa-info-circle"
+                                                    class="text-dark mr-2"><i class="fas fa-info-circle bg-hover-dark p-1 rounded"
                                                         style="font-size: 20px"></i></a><a href="#" class="text-dark mr-2"
                                                     data-toggle="modal" data-target="#change_name{{ $key }}"><i
-                                                        class="fas fa-edit" style="font-size: 20px"></i></a><a href="#"
+                                                        class="fas fa-edit bg-hover-dark p-1 rounded" style="font-size: 20px"></i></a><a href="#"
                                                     class="" data-toggle="modal"
                                                     data-target="#del_testexam{{ $key }}"><i
-                                                        class="fas fa-trash-alt" style="font-size: 20px"></i></a>
+                                                        class="fas fa-trash-alt bg-hover-danger p-1 rounded" style="font-size: 20px"></i></a>
 
                                                 <!-- modal của sửa tên đề thi-->
                                                 <div class="modal fade" id="change_name{{ $key }}" tabindex="-1"

@@ -54,6 +54,7 @@ class QuestionController extends Controller
         $question = Question::firstOrCreate([
             'content' => $request->input('content'),
             'chapter_id' => $request->chapter_id,
+            'level' => $request->level
         ]);
         $question_id = Question::where([['content',$request->input('content')],['chapter_id',$request->chapter_id]])->first()->id;
         $option = new Option;

@@ -144,8 +144,14 @@
                                                             @endif
                                                         </select>
                                                         <label class="mb-0 pl-2">Câu hỏi:</label>
-                                                        <input type="text" class="form-control mb-2" name="content" required
+                                                        <input type="text" class="form-control mb-2" name="level" required
                                                             placeholder="Nhập câu hỏi....">
+                                                            <label class="mb-0 pl-2">Mức độ:</label>
+                                                            <select name="chapter_id" class="form-control mb-2">
+                                                                <option value="1">Dễ</option>
+                                                                <option value="2" selected>Bình thường</option>
+                                                                <option value="3">Khó</option>
+                                                            </select>   
                                                         <div class="container">
                                                             <div class="row">
                                                                 <div class="col-6">
@@ -215,14 +221,14 @@
                                                     $stt = $key2 + 1;
                                                 ?>
                                                 <td class="text-center font-weight-bold">#{{$stt}}</td>
-                                                <td style="width:90%">{{ $question->content }}</td>
+                                                <td style="width:80%">{{ $question->content }}</td>
                                                 <td class="text-center">
                                                     <a href="#" class="mr-2 text-dark" data-toggle="modal"
                                                         data-target="#change_content{{ $key }}-{{ $key1 }}-{{ $key2 }}"><i
-                                                            class="fas fa-edit" style="font-size: 20px"></i></a>
+                                                            class="fas fa-edit bg-hover-dark p-1 rounded" style="font-size: 20px"></i></a>
                                                     <a href="#" class="mr-2" data-toggle="modal"
                                                         data-target="#del_question{{ $key }}-{{ $key1 }}-{{ $key2 }}"><i
-                                                            class="fas fa-trash-alt" style="font-size: 20px"></i></a>
+                                                            class="fas fa-trash-alt bg-hover-danger p-1 rounded" style="font-size: 20px"></i></a>
                                                 </td>
                                             </tr>
                                             <!-- modal của sửa tên câu hỏi-->

@@ -26,7 +26,14 @@ class RedirectIfAuthenticated
             return redirect('/admin');
         } 
         if ($guard === 'inspector' && Auth::guard($guard)->check()) {
-            return redirect('/inspector');
+            if(Auth::guard($guard)->user()->status == 1){
+                return redirect('/inspector');
+            }else{
+                Auth::guard($guard)->logout();
+                return redirect('/inspector/login')->with('error', 'Tài khoản đã bị khóa. Xin hãy liên hệ với quản lý!');
+            }
+
+
         } 
         if (Auth::guard($guard)->check()) {
             return redirect('/');

@@ -46,12 +46,21 @@ class TestExamController extends Controller
             'name.required' => 'Vui lòng thêm tên đề',
             'subject_id.required' => 'Vui lòng chọn môn học mà đề thuộc.',    
         ]);
-        TestExam::firstOrCreate([
-            'name' => $request->input('name'),
-            'subject_id' => $request->input('subject_id'),
-            'description' => $request->input('description'),
-            'level' => $request->input('level'),    
-        ]);
+        if($request->input('level') == 'null'):
+            TestExam::firstOrCreate([
+                'name' => $request->input('name'),
+                'subject_id' => $request->input('subject_id'),
+                'description' => $request->input('description'),  
+            ]);
+        else:
+            TestExam::firstOrCreate([
+                'name' => $request->input('name'),
+                'subject_id' => $request->input('subject_id'),
+                'description' => $request->input('description'),
+                'level' => $request->input('level'),    
+            ]);    
+        endif;    
+        
         return redirect()->back();
     }
 

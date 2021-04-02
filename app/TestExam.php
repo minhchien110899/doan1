@@ -34,7 +34,7 @@ class TestExam extends Model
        elseif($level == 3):
             return "Khó";
        elseif($level == 4):
-            return "Chung";
+            return "KTĐV";
        else:
           return "Đề mẫu";          
        endif;  

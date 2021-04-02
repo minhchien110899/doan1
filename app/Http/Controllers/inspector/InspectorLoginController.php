@@ -26,14 +26,18 @@ class InspectorLoginController extends Controller
     // 		echo 'khong co du lieu';
     // 	}
     // // Attempt to log the user in
-      if (Auth::guard('inspector')->attempt(['username' => $request->username, 'password' => $request->password], $request->remember)) {
+      if (Auth::guard('inspector')->attempt(['username' => $request->username, 'password' => $request->password], $request->remember)):
+        $status_inspector =Auth::guard('inspector')->user()->status;
+        if($status_inspector == 1):
         // if successful, then redirect to their intended location
-        return redirect()->intended(route('inspector.index'));
-      }
-
+          return redirect()->intended(route('inspector.index'));
+        else:
+          return redirect()->back()->withInput($request->except('password'))->with('error', 'Tài khoản đã bị khóa. Xin hãy liên hệ với quản lý!');	
+        endif;
       // if unsuccessful, then redirect back to the login with the form data
-      return redirect()->back()->withInput($request->except('password'))->with('error', 'Đăng nhập thất bại');	
-    
+      else: 
+        return redirect()->back()->withInput($request->except('password'))->with('error', 'Đăng nhập thất bại');	
+      endif;  
     }
 
     public function logout(){

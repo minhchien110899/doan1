@@ -118,6 +118,7 @@ Route::group(['prefix' => 'admin','namespace' => 'admin'], function(){
 	//Route admin get inspector
 	Route::group(['prefix' => 'inspector'], function(){
 		Route::get('/', 'ManageInspectorController@index')->name('admin.inspector');
+		Route::post('/change_status', 'ManageInspectorController@change_status');
 	});
 
 });
