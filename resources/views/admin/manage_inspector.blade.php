@@ -12,13 +12,13 @@
                             <div class="col-4 text-center">
                                 <h6 class="text-uppercase mb-0 mt-2">Quản lý hỗ trợ viên</h6>
                             </div>
-                            <div class="col-4 text-right"><button class="btn btn-outline-success no-border-radius"><i
-                                        class="fas fa-user-plus"></i></button></div>
+                            <div class="col-4 text-right"><a href="{{ url('/admin/inspector/add') }}"><button class="btn btn-outline-success no-border-radius"><i
+                                        class="fas fa-user-plus"></i></button></a></div>
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="container-fluid">
-                            <table class="table table-bordered table-hover table-striped">
+                            <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -35,12 +35,14 @@
                                             <td>{{ $inspector->name }}</td>
                                             <td>{{ $inspector->username }}</td>
                                             <td>
-                                                <span class="badge badge-{{ $inspector->status == 1 ? 'success' : 'danger' }}">{{ $inspector->status == 1 ? 'Active' : 'Inactive' }}</span>
-                                                <i class="fas fa-edit bg-hover-secondary" style="padding: 2px; border-radius:3px" data-toggle="modal"
-                                                data-target="#status_inspector{{$key}}"></i>
+                                                <span
+                                                    class="badge badge-{{ $inspector->status == 1 ? 'success' : 'danger' }}">{{ $inspector->status == 1 ? 'Active' : 'Inactive' }}</span>
+                                                <i class="fas fa-edit bg-hover-secondary"
+                                                    style="padding: 2px; border-radius:3px" data-toggle="modal"
+                                                    data-target="#status_inspector{{ $key }}"></i>
                                                 {{-- modal status giáo viên --}}
-                                                <div class="modal fade" id="status_inspector{{$key}}" tabindex="-1"
-                                                    data-backdrop="static" aria-labelledby="add_inspector"
+                                                <div class="modal fade" id="status_inspector{{ $key }}"
+                                                    tabindex="-1" data-backdrop="static" aria-labelledby="status_inspector"
                                                     aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered modal-sm">
                                                         <div class="modal-content">
@@ -52,26 +54,37 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body text-left">
-                                                                <form action="{{url('/admin/inspector/change_status')}}" method="post">
-                                                                @csrf 
-                                                                <input type="hidden" name="id_inspector" value="{{$inspector->id}}">
-                                                                <select name="status" class="form-control no-border-radius mb-4">
-                                                                    <option value="1" {{ $inspector->status == 1 ? 'selected' : '' }}>Active</option>
-                                                                    <option value="0" {{ $inspector->status == 0 ? 'selected' : '' }}>Inactive</option>
-                                                                </select>
-                                                                <small class="font-italic">
-                                                                    <span class="font-weight-bold">Lưu ý:</span> 
-                                                                    Active là hoạt động bình thường.
-                                                                    Inactive là vô hiệu hóa hỗ trợ viên truy cập vào hệ thống.<br>
-                                                                    Quản trị hãy cân nhắc khi sửa trạng thái của các hỗ trợ viên.
-                                                                </small>
-                                                                <input type="submit" style="display: none" id="changeStatus"> 
-                                                                </form>   
+                                                                <form action="{{ url('/admin/inspector/change_status') }}"
+                                                                    method="post">
+                                                                    @csrf
+                                                                    <input type="hidden" name="id_inspector"
+                                                                        value="{{ $inspector->id }}">
+                                                                    <select name="status"
+                                                                        class="form-control no-border-radius mb-4">
+                                                                        <option value="1"
+                                                                            {{ $inspector->status == 1 ? 'selected' : '' }}>
+                                                                            Active</option>
+                                                                        <option value="0"
+                                                                            {{ $inspector->status == 0 ? 'selected' : '' }}>
+                                                                            Inactive</option>
+                                                                    </select>
+                                                                    <small class="font-italic">
+                                                                        <span class="font-weight-bold">Lưu ý:</span>
+                                                                        Active là hoạt động bình thường.
+                                                                        Inactive là vô hiệu hóa hỗ trợ viên truy cập vào hệ
+                                                                        thống.<br>
+                                                                        Quản trị hãy cân nhắc khi sửa trạng thái của các hỗ
+                                                                        trợ viên.
+                                                                    </small>
+                                                                    <input type="submit" style="display: none"
+                                                                        id="changeStatus">
+                                                                </form>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button"
                                                                     class="btn btn-warning btn-sm no-border-radius"
-                                                                    data-dismiss="modal" onclick="$('#changeStatus').click()">Xác nhận</button>    
+                                                                    data-dismiss="modal"
+                                                                    onclick="$('#changeStatus').click()">Xác nhận</button>
                                                                 <button type="button"
                                                                     class="btn btn-secondary btn-sm no-border-radius"
                                                                     data-dismiss="modal">Đóng</button>
@@ -82,12 +95,13 @@
                                             </td>
                                             <td><span><i class="fas fa-info-circle text-info mr-1 bg-hover-info p-1 rounded"
                                                         style="font-size: 20px" data-toggle="modal"
-                                                        data-target="#detail_inspector{{$key}}"></i></span>
+                                                        data-target="#detail_inspector{{ $key }}"></i></span>
                                                 <span><img src="/images/rotation-lock.svg" width="30px"
-                                                        class="bg-hover-danger p-1 mb-1 rounded "></span>
+                                                        class="bg-hover-danger p-1 mb-1 rounded" data-toggle="modal"
+                                                        data-target="#resetpass_inspector{{ $key }}"></span>
                                                 {{-- modal detail giáo viên --}}
-                                                <div class="modal fade" id="detail_inspector{{$key}}" tabindex="-1"
-                                                    data-backdrop="static" aria-labelledby="add_inspector"
+                                                <div class="modal fade" id="detail_inspector{{ $key }}"
+                                                    tabindex="-1" data-backdrop="static" aria-labelledby="detail_inspector"
                                                     aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered">
                                                         <div class="modal-content">
@@ -126,6 +140,46 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                {{-- end detail modal --}}
+                                                {{-- modal reset password giáo viên --}}
+                                                <div class="modal fade" id="resetpass_inspector{{ $key }}"
+                                                    tabindex="-1" data-backdrop="static"
+                                                    aria-labelledby="resetpass_inspector" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered modal-sm">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Reset mật
+                                                                    khẩu</h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body text-left">
+                                                                <small class="font-italic">Khi hỗ trợ viên quên mất mật khẩu
+                                                                    của mình thì quản lý có thể khởi tạo lại mật khẩu cho hỗ
+                                                                    trợ viên với mật khẩu có giá trị là:<p
+                                                                        class="font-weight-bold mb-0 "
+                                                                        style="font-size: 16px">password</p></small>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <form
+                                                                    action="{{ url('/admin/inspector/reset_password') }}"
+                                                                    method="post">
+                                                                    @csrf
+                                                                    <input type="hidden" name="id_inspector"
+                                                                        value="{{ $inspector->id }}">
+                                                                    <button class="btn btn-danger btn-sm no-border-radius"
+                                                                        type="submit">Xác nhận</button>
+                                                                </form>
+                                                                <button type="button"
+                                                                    class="btn btn-secondary btn-sm no-border-radius"
+                                                                    data-dismiss="modal">Đóng</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{-- end reset password modal --}}
                                             </td>
                                         </tr>
                                     @endforeach
@@ -138,5 +192,4 @@
             </div>
         </div>
     </div>
-
 @endsection

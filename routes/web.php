@@ -119,6 +119,9 @@ Route::group(['prefix' => 'admin','namespace' => 'admin'], function(){
 	Route::group(['prefix' => 'inspector'], function(){
 		Route::get('/', 'ManageInspectorController@index')->name('admin.inspector');
 		Route::post('/change_status', 'ManageInspectorController@change_status');
+		Route::post('/reset_password', 'ManageInspectorController@reset_password');
+		Route::get('/add', 'ManageInspectorController@adding_page');
+		Route::post('/add', 'ManageInspectorController@add_inspector');
 	});
 
 });

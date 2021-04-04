@@ -26,6 +26,7 @@
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   </head>
   <body>
     <!-- navbar-->
@@ -101,6 +102,7 @@
       </div>
       <div class="page-holder w-100 d-flex flex-wrap">
         <!-- content -->
+        @include('inc.messages')
         @yield('content')
         <!-- end content -->
         <footer class="footer bg-white shadow align-self-end py-3 px-xl-5 w-100">
@@ -119,9 +121,7 @@
     <script src="{{ url('admin_assets/vendor/popper.js/umd/popper.min.js') }}"> </script>
     <script src="{{ url('admin_assets/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ url('admin_assets/vendor/jquery.cookie/jquery.cookie.js') }}"> </script>
-    <script src="{{ url('admin_assets/vendor/chart.js/Chart.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-    <script src="{{ url('admin_assets/js/charts-home.js') }}"></script>
     <script src="{{ url('admin_assets/js/front.js') }}"></script>
   </body>
 </html>
