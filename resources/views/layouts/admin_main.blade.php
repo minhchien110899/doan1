@@ -121,7 +121,9 @@
     <script src="{{ url('admin_assets/vendor/popper.js/umd/popper.min.js') }}"> </script>
     <script src="{{ url('admin_assets/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ url('admin_assets/vendor/jquery.cookie/jquery.cookie.js') }}"> </script>
+    <script src="{{ url('admin_assets/vendor/chart.js/Chart.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="{{ url('admin_assets/js/charts-home.js') }}"></script>
     <script src="{{ url('admin_assets/js/front.js') }}"></script>
   </body>
 </html>
