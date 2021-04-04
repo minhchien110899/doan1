@@ -31,10 +31,10 @@
                   <div class="flex-grow-1 d-flex align-items-center">
                     <div class="dot mr-3 bg-blue"></div>
                     <div class="text">
-                      <h6 class="mb-0">Dữ liệu tốn</h6><span class="text-gray">135 MB</span>
+                      <h6 class="mb-0">Hỗ trợ viên</h6><span class="text-gray">{{$count_inspector}} Thành viên</span>
                     </div>
                   </div>
-                  <div class="icon text-white bg-blue"><i class="fa fa-database" aria-hidden="true"></i></div>
+                  <div class="icon text-white bg-blue"><i class="fas fa-user-shield"></i></div>
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
