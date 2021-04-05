@@ -86,7 +86,7 @@
         <ul class="sidebar-menu list-unstyled">
               <li class="sidebar-list-item"><a href="{{ route('admin.index') }}" class="sidebar-link text-muted "><i class="o-home-1 mr-3 text-gray"></i><span>Home</span></a></li>
               <li class="sidebar-list-item"><a href="{{route('admin.inspector')}}" class="sidebar-link text-muted mb-2"><i class="fas fa-user-shield mr-3 text-gray" style="font-size: 19.5px"></i><span>Hỗ trợ viên</span></a></li>
-              <li class="sidebar-list-item"><a href="#" class="sidebar-link text-muted"><i class="fas fa-users mr-3 text-gray" style="font-size: 19.5px"></i><span>Thí sinh</span></a></li>
+              <li class="sidebar-list-item"><a href="{{route('admin.user')}}" class="sidebar-link text-muted"><i class="fas fa-users mr-3 text-gray" style="font-size: 19.5px"></i><span>Thí sinh</span></a></li>
               <li class="sidebar-list-item"><a href="{{route('admin.profile')}}" class="sidebar-link text-muted mb-1"><i class="o-profile-1 mr-3 text-gray"></i><span>Thông tin chung</span></a></li>
         </ul>
         <div class="text-gray-400 text-uppercase px-3 px-lg-4 py-4 font-weight-bold small headings-font-family">EXTRAS</div>

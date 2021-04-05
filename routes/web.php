@@ -124,6 +124,11 @@ Route::group(['prefix' => 'admin','namespace' => 'admin'], function(){
 		Route::post('/add', 'ManageInspectorController@add_inspector');
 	});
 
+	Route::group(['prefix' => 'user'], function(){
+		Route::get('/', 'ManageUserController@index')->name('admin.user');
+		Route::post('/reset_password', 'ManageUserController@reset_password');
+	});
+
 });
 
 Route::get('/admin/test', 'TestController@checkcountdown');
