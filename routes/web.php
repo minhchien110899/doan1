@@ -148,5 +148,19 @@ Route::group(['prefix' => 'inspector','namespace' => 'inspector'], function(){
 		Route::get('/{id}/review', 'TestExamController@review');
 		Route::post('/{id}/add_question', 'TestExamController@add_question');
 		Route::post('/{testexam_id}/del_question/{question_id}', 'TestExamController@del_question');
-	});	
+	});
+	
+	Route::group(['prefix' => 'profile'], function(){
+		Route::get('/', 'ProfileController@index')->name('inspector.profile');
+		Route::post('/change_info/{id}', 'ProfileController@change_info');
+		Route::post('/change_avatar/{id}', 'ProfileController@change_avatar');
+	});
+
+	Route::group(['prefix' => 'question'], function(){
+		Route::get('/', 'QuestionController@index')->name('inspector.question');
+		Route::post('/add_question', 'QuestionController@add_question');
+		Route::post('/change_content/{id}', 'QuestionController@change_content');
+		Route::post('del_question/{id}', 'QuestionController@del_question');
+		Route::get('/restore_trash/{id}', 'QuestionController@restore_trash');
+	});
 });
