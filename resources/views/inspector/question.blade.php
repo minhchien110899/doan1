@@ -148,7 +148,7 @@
                                                             @if ($subject->chapter)
                                                                 @foreach ($subject->chapter as $key => $chapterVal)
                                                                     <option value="{{ $chapterVal->id }}">
-                                                                        {{ $chapterVal->name }} - {{ $chapterVal->description}}
+                                                                        {{ $chapterVal->name }} - {{ $chapterVal->description }} - {{ $chapterVal->subject->name}}
                                                                     </option>
                                                                 @endforeach
                                                             @endif
@@ -231,7 +231,7 @@
                                                     $stt = $key2 + 1;
                                                 ?>
                                                 <td class="text-center font-weight-bold">#{{$stt}}</td>
-                                                <td style="width:80%">{{ $question->content }}</td>
+                                                <td style="width:80%;overflow: hidden;white-space: normal;">{{ $question->content }}</td>
                                                 <td class="text-center">
                                                     <a href="#" class="mr-2 text-dark" data-toggle="modal"
                                                         data-target="#change_content{{ $key }}-{{ $key1 }}-{{ $key2 }}"><i
