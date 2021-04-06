@@ -50,7 +50,16 @@ class QuestionController extends Controller
     }
 
     public function add_question(Request $request){
-        $request->validate(['chapter_id' =>'required'], ['chapter_id.required' => 'Chưa chọn đáp án đúng.Vui lòng chọn lại.']);
+        $request->validate(
+            [
+                'chapter_id' =>'required',
+                'level' => 'required',
+                'content' => 'required',
+                'answer' => 'required'
+            ]);
+        if($request->input('chapter_id') == "null"){
+            return redirect()->back()->with('error', 'Chưa chọn chương. Vui lòng thử lại!');
+        }    
         $question = Question::firstOrCreate([
             'content' => $request->input('content'),
             'chapter_id' => $request->chapter_id,

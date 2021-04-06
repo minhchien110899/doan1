@@ -16,12 +16,17 @@
                     </div>
                     <div class="card-body">
                         <div class="container-fluid">
-                            <table class="table table-bordered table-hover">
+                            <div class="row d-flex justify-content-end">
+                                <div class="col-3 mb-2 pr-0"><input type="text" class="form-control no-border-radius" id="myInput1" onkeyup="myFunction1()" placeholder="Tìm kiếm theo email..." title="Type in a email"></div>
+                                <div class="col-3 mb-2"><input type="text" class="form-control no-border-radius" id="myInput" onkeyup="myFunction()" placeholder="Tìm kiếm theo username..." title="Type in a username"></div>
+                              </div>
+                            <table class="table table-bordered table-hover" id="myTable">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Tên</th>
                                         <th scope="col">Email</th>
+                                        <th scope="col">Username</th>
                                         <th scope="col">Khởi tạo</th>
                                         <th scope="col">Hiệu chỉnh</th>
                                     </tr>
@@ -32,6 +37,7 @@
                                             <th scope="row">{{ ++$key }}</th>
                                             <td>{{ ucwords($user->name) }}</td>
                                             <td>{{ $user->email }}</td>
+                                            <td>{!! !empty($user->google_id) ? '<i class="fab fa-google-plus-square text-danger mt-1" style="font-size: 20px"></i>' : $user->username !!}</td>
                                             <td class="font-italic">{{ date('d-m-Y', strtotime($user->created_at)) }}</td>
                                             <td><i class="fas fa-info-circle bg-hover-info text-info p-1 rounded"
                                                     style="font-size: 20px" data-toggle="modal"
@@ -140,4 +146,42 @@
             </div>
         </div>
     </div>
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toLowerCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[2];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+        function myFunction1() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput1");
+            filter = input.value.toLowerCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
 @endsection

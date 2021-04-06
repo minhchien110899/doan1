@@ -2,6 +2,16 @@
 
 @section('content')
     <div class="container">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                    {{ $error }}
+                @endforeach
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
         <div class="row mt-3 mb-3 justify-content-center">
             <div class="col-lg-12">
                 <div class="card">
@@ -132,7 +142,7 @@
                                                         @csrf
                                                         <label class="mb-0 pl-2">Thuộc Chương:</label>
                                                         <select name="chapter_id" class="form-control mb-2">
-                                                            <option>
+                                                            <option value="null">
                                                                 <p>-Chọn chương:</p>
                                                             </option>
                                                             @if ($subject->chapter)
@@ -144,14 +154,14 @@
                                                             @endif
                                                         </select>
                                                         <label class="mb-0 pl-2">Câu hỏi:</label>
-                                                        <input type="text" class="form-control mb-2" name="level" required
+                                                        <input type="text" class="form-control mb-2" name="content" required
                                                             placeholder="Nhập câu hỏi....">
-                                                            <label class="mb-0 pl-2">Mức độ:</label>
-                                                            <select name="chapter_id" class="form-control mb-2">
-                                                                <option value="1">Dễ</option>
-                                                                <option value="2" selected>Bình thường</option>
-                                                                <option value="3">Khó</option>
-                                                            </select>   
+                                                        <label class="mb-0 pl-2">Mức độ:</label>
+                                                        <select name="level" class="form-control mb-2">
+                                                            <option value="1">Dễ</option>
+                                                            <option value="2" selected>Bình thường</option>
+                                                            <option value="3">Khó</option>
+                                                        </select>
                                                         <div class="container">
                                                             <div class="row">
                                                                 <div class="col-6">

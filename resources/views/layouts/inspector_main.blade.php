@@ -9,6 +9,7 @@
     <!-- plugins:css -->
     <link rel="stylesheet" href="/inspector_assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="/inspector_assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <!-- End plugin css for this page -->
@@ -107,9 +108,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
+                        <a class="nav-link" data-toggle="collapse" href="#" aria-expanded="false"
                             aria-controls="ui-basic">
-                            <span class="menu-title">Basic UI Elements</span>
+                            <span class="menu-title">demo</span>
                             <i class="menu-arrow"></i>
                             <i class="mdi mdi-crosshairs-gps menu-icon"></i>
                         </a>
@@ -123,8 +124,8 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/icons/mdi.html">
-                            <span class="menu-title">Icons</span>
+                        <a class="nav-link" href="{{ url('/inspector/testexam') }}">
+                            <span class="menu-title">Bài thi</span>
                             <i class="mdi mdi-contacts menu-icon"></i>
                         </a>
                     </li>

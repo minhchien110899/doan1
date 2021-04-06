@@ -19,7 +19,11 @@
                     </div>
                     <div class="card-body">
                         <div class="container-fluid">
-                            <table class="table table-bordered table-hover">
+                            <div class="row d-flex justify-content-end">
+                                <div class="col-3 mb-2 pr-0"><input type="text" class="form-control no-border-radius" id="myInput1" onkeyup="myFunction1()" placeholder="Tìm kiếm theo tên..." title="Type in a email"></div>
+                                <div class="col-3 mb-2"><input type="text" class="form-control no-border-radius" id="myInput" onkeyup="myFunction()" placeholder="Tìm kiếm theo username..." title="Type in a username"></div>
+                              </div>
+                            <table class="table table-bordered table-hover" id="myTable">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -204,4 +208,42 @@
             </div>
         </div>
     </div>
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toLowerCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+        function myFunction1() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput1");
+            filter = input.value.toLowerCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
 @endsection

@@ -137,5 +137,16 @@ Route::group(['prefix' => 'inspector','namespace' => 'inspector'], function(){
 	Route::get('/', 'InspectorController@index')->name('inspector.index');
 	Route::get('/login', 'InspectorLoginController@login')->name('inspector.login');
 	Route::post('/login','InspectorLoginController@postlogin');
-	Route::get('/logout','InspectorLoginController@logout')->name('inspector.logout');	
+	Route::get('/logout','InspectorLoginController@logout')->name('inspector.logout');
+	//manage testexam
+	Route::group(['prefix' => 'testexam'], function(){
+		Route::get('/', 'TestExamController@index')->name('inspector.testexam');
+		Route::post('/change_name/{id}', 'TestExamController@change_name');
+		Route::post('/del_testexam/{id}', 'TestExamController@del_testexam');
+		Route::get('/restore_trash/{id}', 'TestExamController@restore_trash');
+		Route::post('/add_testexam', 'TestExamController@add_testexam');
+		Route::get('/{id}/review', 'TestExamController@review');
+		Route::post('/{id}/add_question', 'TestExamController@add_question');
+		Route::post('/{testexam_id}/del_question/{question_id}', 'TestExamController@del_question');
+	});	
 });
