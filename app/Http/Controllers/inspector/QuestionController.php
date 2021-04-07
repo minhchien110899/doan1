@@ -28,6 +28,7 @@ class QuestionController extends Controller
     public function change_content(Request $request ,$id){
         $question = Question::find($id);
         $question->content = $request->input('content');
+        $question->level = $request->input('level');
         $question->option->name = $request->name_change;
         if($request->input('answer_change') == 'option1'):
             $question->option->answer = $request->name_change[0];

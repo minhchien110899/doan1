@@ -234,7 +234,7 @@
                                                 <td style="width:80%;overflow: hidden;white-space: normal;">{{ $question->content }}</td>
                                                 <td class="text-center">
                                                     <a href="#" class="mr-2 text-dark" data-toggle="modal"
-                                                        data-target="#change_content{{ $key }}-{{ $key1 }}-{{ $key2 }}"><i
+                                                        data-target="#change_content{{ $key }}-{{ $key1 }}-{{ $key2 }}" onclick="$('.form_edit_ques')[0].reset()"><i
                                                             class="fas fa-edit bg-hover-dark p-1 rounded" style="font-size: 20px"></i></a>
                                                     <a href="#" class="mr-2" data-toggle="modal"
                                                         data-target="#del_question{{ $key }}-{{ $key1 }}-{{ $key2 }}"><i
@@ -251,11 +251,20 @@
                                                         <div class="modal-body">
                                                             <form
                                                                 action="{{ url('/admin/question/change_content', $question->id) }}"
-                                                                method="POST">
+                                                                method="POST" class="form_edit_ques">
                                                                 @csrf
                                                                 <div class="form-group">
+                                                                    <label class="mb-0 pl-2">Câu hỏi:</label>
                                                                     <input type="text" class="form-control" name="content"
                                                                         value="{{ $question->content }}">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="mb-0 pl-2">Mức độ:</label>
+                                                                    <select name="level" class="form-control mb-2">
+                                                                        <option value="1" {{ $question->level==1 ? 'selected':'' }}>Dễ</option>
+                                                                        <option value="2" {{ $question->level==2 || empty($question->level) ? 'selected':'' }}>Bình thường</option>
+                                                                        <option value="3" {{ $question->level==3 ? 'selected':'' }}>Khó</option>
+                                                                    </select>
                                                                 </div>
                                                                 <div class="container">
                                                                     <div class="row">
@@ -269,7 +278,7 @@
                                                                         </div>
                                                                         <div class="col-6 mt-2">
                                                                             @foreach ($question->option->name as $key5 => $option)
-                                                                                <div class="form-check mt-2 mb-1">
+                                                                                <div class="form-check mt-3 mb-3">
                                                                                     <input type="radio" name="answer_change"
                                                                                         value="option{{ ++$key5 }}"
                                                                                         @if ($option == $question->option->answer) checked @endif>

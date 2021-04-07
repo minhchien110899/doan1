@@ -49,7 +49,7 @@
                         <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown"
                             aria-expanded="false">
                             <div class="nav-profile-img">
-                                <img src="/inspector_assets/images/faces/face1.jpg" alt="image">
+                                <img src="{{ empty(Auth::guard('inspector')->user()->avatar) ? '/images/undefined_user.jpg' : Auth::guard('inspector')->user()->avatar }}" alt="image">
                                 <span class="availability-status online"></span>
                             </div>
                             <div class="nav-profile-text">
@@ -87,9 +87,9 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item nav-profile">
-                        <a href="#" class="nav-link">
+                        <a href="{{ url('/inspector/profile') }}" class="nav-link">
                             <div class="nav-profile-image">
-                                <img src="/inspector_assets/images/faces/face1.jpg" alt="profile">
+                                <img src="{{ empty(Auth::guard('inspector')->user()->avatar) ? '/images/undefined_user.jpg' : Auth::guard('inspector')->user()->avatar }}" alt="profile">
                                 <span class="login-status online"></span>
                                 <!--change to offline or busy as needed-->
                             </div>
@@ -103,19 +103,19 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/inspector') }}">
-                            <span class="menu-title">Dashboard</span>
+                            <span class="menu-title">Home</span>
                             <i class="mdi mdi-home menu-icon"></i>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/inspector/testexam') }}">
-                            <span class="menu-title">Bài thi</span>
+                            <span class="menu-title">Quản lý bài thi</span>
                             <i class="mdi mdi-book-plus menu-icon"></i>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/inspector/question') }}">
-                            <span class="menu-title">Câu hỏi</span>
+                            <span class="menu-title">Quản lý câu hỏi</span>
                             <i class="mdi mdi-comment-question-outline menu-icon"></i>
                         </a>
                     </li>
@@ -130,7 +130,9 @@
                             <div class="border-bottom">
                                 <h6 class="font-weight-normal mb-3">Quick access</h6>
                             </div>
-                            <a href="https://www.facebook.com/multichoice.online" class="text-decoration-none"><button class="btn btn-block btn-lg btn-gradient-primary mt-4">Fanpage<i class="mdi mdi-facebook-box ml-1"></i></button></a>
+                            <a href="https://www.facebook.com/multichoice.online" target="_blank" class="text-decoration-none"><button class="btn btn-block btn-lg btn-gradient-info mt-4">Fanpage<i class="mdi mdi-facebook-box ml-1"></i></button></a>
+                            <a href="https://www.facebook.com/multichoice.online/inbox" target="_blank" class="text-decoration-none"><button class="btn btn-block btn-lg text-dark btn-gradient-success mt-4">Tin nhắn<i class="mdi mdi-facebook-box ml-1"></i></button></a>
+                            <a href="#" class="text-decoration-none"><button class="btn btn-block btn-lg text-dark btn-gradient-warning mt-4">Điều khoản<i class="mdi mdi-bookmark ml-1"></i></button></a>
                         </span>
                     </li>
                 </ul>

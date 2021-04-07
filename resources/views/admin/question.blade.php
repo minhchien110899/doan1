@@ -235,7 +235,7 @@
                                                 <td class="text-center">
                                                     <a href="#" class="mr-2 text-dark" data-toggle="modal"
                                                         data-target="#change_content{{ $key }}-{{ $key1 }}-{{ $key2 }}"><i
-                                                            class="fas fa-edit bg-hover-dark p-1 rounded" style="font-size: 20px"></i></a>
+                                                            class="fas fa-edit bg-hover-dark p-1 rounded" style="font-size: 20px" onclick="$('.form_edit_ques')[0].reset()"></i></a>
                                                     <a href="#" class="mr-2" data-toggle="modal"
                                                         data-target="#del_question{{ $key }}-{{ $key1 }}-{{ $key2 }}"><i
                                                             class="fas fa-trash-alt bg-hover-danger p-1 rounded" style="font-size: 20px"></i></a>
@@ -251,11 +251,20 @@
                                                         <div class="modal-body">
                                                             <form
                                                                 action="{{ url('/admin/question/change_content', $question->id) }}"
-                                                                method="POST">
+                                                                method="POST" class="form_edit_ques">
                                                                 @csrf
                                                                 <div class="form-group">
+                                                                    <label class="mb-0 pl-2">Câu hỏi:</label>
                                                                     <input type="text" class="form-control" name="content"
                                                                         value="{{ $question->content }}">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="mb-0 pl-2">Mức độ:</label>
+                                                                    <select name="level" class="form-control mb-2">
+                                                                        <option value="1" {{ $question->level==1 ? 'selected':'' }}>Dễ</option>
+                                                                        <option value="2" {{ $question->level==2 || empty($question->level) ? 'selected':'' }}>Bình thường</option>
+                                                                        <option value="3" {{ $question->level==3 ? 'selected':'' }}>Khó</option>
+                                                                    </select>
                                                                 </div>
                                                                 <div class="container">
                                                                     <div class="row">
