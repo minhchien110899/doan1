@@ -95,29 +95,6 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="row d-flex justify-content-start">
-                        <div class="col-3 mt-2" style="margin-left: 32px">
-                            <form action="/admin/question" method="get">
-                                <div class="input-group">
-
-                                    <select name="subject_id" class="form-control no-border-radius">
-                                        <option value="all">Theo môn học - tất cả</option>
-                                        @if (count($subjects_template) > 0)
-                                            @foreach ($subjects_template as $key => $subject)
-                                                <option value="{{ $subject->id }}">{{ $subject->name }}
-                                                </option>
-                                            @endforeach
-                                        @endif
-                                    </select>
-                                    <div class="input-group-append ml-2">
-                                        <button class="btn btn-info btn-sm no-border-radius p-2" type="submit"><i
-                                                class="fas fa-search"></i></button>
-                                    </div>
-
-                                </div>
-                            </form>
-                        </div>
-                    </div> --}}
                     <div class="card-body pt-0 mt-3">
                         @foreach ($subjects as $key => $subject)
                             <div class="row d-flex justify-content-between">
@@ -217,7 +194,7 @@
                                 <table class="table card-text table-bordered table-sm table-hover">
                                     <thead>
                                         <tr>
-                                            <th colspan="3">
+                                            <th colspan="4">
                                                 <h5>{{ $chapter->name }} : {{ $chapter->description }}</h5>
                                             </th>
                                         </tr>
@@ -231,11 +208,21 @@
                                                     $stt = $key2 + 1;
                                                 ?>
                                                 <td class="text-center font-weight-bold">#{{$stt}}</td>
-                                                <td style="width:80%;overflow: hidden;white-space: normal;">{{ $question->content }}</td>
+                                                <td style="width:70%;overflow: hidden;white-space: normal;">{{ $question->content }}</td>
+                                                <?php 
+                                                    if($question->level == 1):
+                                                        $question_level = "Dễ";
+                                                    elseif($question->level == 2 || empty($question->level)):
+                                                        $question_level = "Bình thường";
+                                                    elseif($question->level == 3 ):
+                                                        $question_level = "Khó";
+                                                    endif;    
+                                                ?>
+                                                <td class="text-center"><small class="text-secondary font-italic">{{ $question_level }}</small></td>
                                                 <td class="text-center">
                                                     <a href="#" class="mr-2 text-dark" data-toggle="modal"
                                                         data-target="#change_content{{ $key }}-{{ $key1 }}-{{ $key2 }}"><i
-                                                            class="fas fa-edit bg-hover-dark p-1 rounded" style="font-size: 20px" onclick="$('.form_edit_ques')[0].reset()"></i></a>
+                                                            class="fas fa-edit bg-hover-dark p-1 rounded" style="font-size: 20px" onclick="$('#change_content{{ $key }}-{{ $key1 }}-{{ $key2 }} .form_edit_ques')[0].reset()"></i></a>
                                                     <a href="#" class="mr-2" data-toggle="modal"
                                                         data-target="#del_question{{ $key }}-{{ $key1 }}-{{ $key2 }}"><i
                                                             class="fas fa-trash-alt bg-hover-danger p-1 rounded" style="font-size: 20px"></i></a>

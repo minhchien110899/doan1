@@ -234,7 +234,7 @@
                                                 <td style="width:80%;overflow: hidden;white-space: normal;">{{ $question->content }}</td>
                                                 <td class="text-center">
                                                     <a href="#" class="mr-2 text-dark" data-toggle="modal"
-                                                        data-target="#change_content{{ $key }}-{{ $key1 }}-{{ $key2 }}" onclick="$('.form_edit_ques')[0].reset()"><i
+                                                        data-target="#change_content{{ $key }}-{{ $key1 }}-{{ $key2 }}" onclick="$('#change_content{{ $key }}-{{ $key1 }}-{{ $key2 }} .form_edit_ques')[0].reset()"><i
                                                             class="fas fa-edit bg-hover-dark p-1 rounded" style="font-size: 20px"></i></a>
                                                     <a href="#" class="mr-2" data-toggle="modal"
                                                         data-target="#del_question{{ $key }}-{{ $key1 }}-{{ $key2 }}"><i

@@ -138,6 +138,22 @@ Route::group(['prefix' => 'inspector','namespace' => 'inspector'], function(){
 	Route::get('/login', 'InspectorLoginController@login')->name('inspector.login');
 	Route::post('/login','InspectorLoginController@postlogin');
 	Route::get('/logout','InspectorLoginController@logout')->name('inspector.logout');
+	//profile
+	Route::group(['prefix' => 'profile'], function(){
+		Route::get('/', 'ProfileController@index')->name('inspector.profile');
+		Route::post('/change_info/{id}', 'ProfileController@change_info');
+		Route::post('/change_avatar/{id}', 'ProfileController@change_avatar');
+	});
+	//subject
+	Route::group(['prefix' => 'subject'],function(){
+		Route::get('/','SubjectController@index')->name('inspector.subject');
+		Route::post('/change_name/{id}','SubjectController@change_name');
+		Route::post('/off_status/{id}','SubjectController@off_status');
+		Route::post('/on_status/{id}','SubjectController@on_status');
+		Route::post('/add_subject', 'SubjectController@add_subject');
+		Route::post('/del_subject/{id}','SubjectController@del_subject');
+		Route::get('/restore_trash/{id}', 'SubjectController@restore_trash');
+	});
 	//manage testexam
 	Route::group(['prefix' => 'testexam'], function(){
 		Route::get('/', 'TestExamController@index')->name('inspector.testexam');
@@ -149,13 +165,7 @@ Route::group(['prefix' => 'inspector','namespace' => 'inspector'], function(){
 		Route::post('/{id}/add_question', 'TestExamController@add_question');
 		Route::post('/{testexam_id}/del_question/{question_id}', 'TestExamController@del_question');
 	});
-	
-	Route::group(['prefix' => 'profile'], function(){
-		Route::get('/', 'ProfileController@index')->name('inspector.profile');
-		Route::post('/change_info/{id}', 'ProfileController@change_info');
-		Route::post('/change_avatar/{id}', 'ProfileController@change_avatar');
-	});
-
+	//question
 	Route::group(['prefix' => 'question'], function(){
 		Route::get('/', 'QuestionController@index')->name('inspector.question');
 		Route::post('/add_question', 'QuestionController@add_question');
