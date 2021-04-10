@@ -218,7 +218,7 @@
                                                         $question_level = "Khó";
                                                     endif;    
                                                 ?>
-                                                <td class="text-center"><small class="text-secondary font-italic">{{ $question_level }}</small></td>
+                                                <td style="width: 10%" class="text-center"><small class="text-secondary font-italic">{{ $question_level }}</small></td>
                                                 <td class="text-center">
                                                     <a href="#" class="mr-2 text-dark" data-toggle="modal"
                                                         data-target="#change_content{{ $key }}-{{ $key1 }}-{{ $key2 }}"><i
