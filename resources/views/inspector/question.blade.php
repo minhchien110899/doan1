@@ -231,7 +231,17 @@
                                                     $stt = $key2 + 1;
                                                 ?>
                                                 <td class="text-center font-weight-bold">#{{$stt}}</td>
-                                                <td style="width:80%;overflow: hidden;white-space: normal;">{{ $question->content }}</td>
+                                                <td style="width:70%;overflow: hidden;white-space: normal;">{{ $question->content }}</td>
+                                                <?php 
+                                                    if($question->level == 1):
+                                                        $question_level = "Dễ";
+                                                    elseif($question->level == 2 || empty($question->level)):
+                                                        $question_level = "Bình thường";
+                                                    elseif($question->level == 3 ):
+                                                        $question_level = "Khó";
+                                                    endif;    
+                                                ?>
+                                                <td style="width: 10%" class="text-center"><small class="text-secondary font-italic">{{ $question_level }}</small></td>
                                                 <td class="text-center">
                                                     <a href="#" class="mr-2 text-dark" data-toggle="modal"
                                                         data-target="#change_content{{ $key }}-{{ $key1 }}-{{ $key2 }}" onclick="$('#change_content{{ $key }}-{{ $key1 }}-{{ $key2 }} .form_edit_ques')[0].reset()"><i
