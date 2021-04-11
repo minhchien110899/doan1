@@ -70,8 +70,8 @@ window.onload = function () {
                     </form>
                 </div>
             </div>
-            <h4><a href="{{ url('/exam/subject', $testexam->subject->id) }}"
-                    style="margin-bottom: 30px !important;">&larr; Quay lại</a></h4>
+            <a href="{{ url('/personalizeElearning/init') }}"
+                    style="margin-bottom: 30px !important;">&larr; Quay lại</a>
         </div>
     </div>
 @endsection

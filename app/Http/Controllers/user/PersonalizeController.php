@@ -8,6 +8,7 @@ use App\Subject;
 use App\TestExam;
 use App\Personalize;
 use Auth;
+use DB;
 class PersonalizeController extends Controller
 {
     public function __construct(){
@@ -19,7 +20,7 @@ class PersonalizeController extends Controller
         return view('user.personalize.index', ['personalizes' => $personalizes]);
     }
     public function init_personalize(){
-        $subjects = Subject::all();
+        $subjects = DB::select('select * from subjects where id = any(select subject_id from testexams where level = ?)', [4]);
         return view('user.personalize.init_personalize', ['subjects' => $subjects]);        
     }
     public function make(Request $req, $subject_id){

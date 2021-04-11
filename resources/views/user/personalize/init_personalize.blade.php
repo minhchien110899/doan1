@@ -27,5 +27,6 @@ $lastname = ucwords($array_name[count($array_name) - 1]);
         @else
             {{__('Không có môn học nào') }}
         @endif
+    <a href="{{ url('/personalizeElearning') }}">&larr; Quay lại</a>
 </div>    
 @endsection
