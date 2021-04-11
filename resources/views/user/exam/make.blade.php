@@ -35,7 +35,7 @@ window.onload = function () {
   	<div class="card-body">
 		<form action="{{ url('/exam/create_history', $testexam->id) }}" method="POST">
 			@csrf
-			@if(count($questions) > 0)	
+			@if(count($questions) > 0 && count($questions) > 5)	
 		    @foreach($questions->random(5) as $key => $question)
 		    <input type="hidden" name="questionChoose[]" value="{{$question->id}}">
 		    	<div class="row">
@@ -44,7 +44,7 @@ window.onload = function () {
 					    	<h6 class="font-weight-bold">Câu {{++$key}}: {{$question->content}}</h6>
 					    	<?php
 					    		$options = $question->option->name;
-					    		$options = Arr::random($options, 4);
+                                shuffle($options);
 					    	?>
 					    	@foreach($options as $option)
 					    			<label class="radio-inline">

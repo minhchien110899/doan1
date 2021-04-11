@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row mt-3 mb-3 justify-content-center">
-            <div class="col-lg-10 text-center">
+            <div class="col-lg-12 text-center">
                 @error('subject_id')
                     <div class="alert alert-danger w-50 text-center">
                         {{ $message }}

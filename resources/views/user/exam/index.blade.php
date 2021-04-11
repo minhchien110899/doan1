@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="container" style="height: 600px;">
+<div class="container" style="max-height:1500px;">
 <div class="row">
 	@if(count($subjects) > 0)
 		@foreach($subjects as $subject)
