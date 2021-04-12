@@ -25,7 +25,7 @@
                                 <div class="col-3 col-sm-3 col-lg-3">
                                     {{-- <a href="#" class="btn btn-outline-success mr-1" data-toggle="modal"
                                         data-target="#add_question">Thêm Câu hỏi</a> --}}
-                                    <form action="/admin/question" method="get">
+                                    <form action="/inspector/question" method="get">
                                         <div class="input-group">
 
                                             <select name="subject_id" class="form-control no-border-radius">
@@ -72,7 +72,7 @@
                                                                         <td class="w-50">{{ $question->content }}</td>
                                                                         <td> {{ $question->chapter->name }} -
                                                                             {{ $question->chapter->subject->name }}</td>
-                                                                        <td><a href="{{ url('/admin/question/restore_trash', $question->id) }}"
+                                                                        <td><a href="{{ url('/inspector/question/restore_trash', $question->id) }}"
                                                                                 class="btn btn-info btn-sm">Khôi phục</a>
                                                                         </td>
                                                                     </tr>
@@ -97,7 +97,7 @@
                     </div>
                     {{-- <div class="row d-flex justify-content-start">
                         <div class="col-3 mt-2" style="margin-left: 32px">
-                            <form action="/admin/question" method="get">
+                            <form action="/inspector/question" method="get">
                                 <div class="input-group">
 
                                     <select name="subject_id" class="form-control no-border-radius">
@@ -137,7 +137,7 @@
                                             <div class="modal-content">
                                                 <div class="modal-body text-left">
                                                     <h5 class="text-center">Môn: {{ $subject->name }}</h5>
-                                                    <form action="{{ url('/admin/question/add_question') }}"
+                                                    <form action="{{ url('/inspector/question/add_question') }}"
                                                         method="POST">
                                                         @csrf
                                                         <label class="mb-0 pl-2">Thuộc Chương:</label>
@@ -260,7 +260,7 @@
                                                     <div class="modal-content">
                                                         <div class="modal-body">
                                                             <form
-                                                                action="{{ url('/admin/question/change_content', $question->id) }}"
+                                                                action="{{ url('/inspector/question/change_content', $question->id) }}"
                                                                 method="POST" class="form_edit_ques">
                                                                 @csrf
                                                                 <div class="form-group">
@@ -327,7 +327,7 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <form
-                                                                action="{{ url('/admin/question/del_question', $question->id) }}"
+                                                                action="{{ url('/inspector/question/del_question', $question->id) }}"
                                                                 method="POST">
                                                                 @csrf
                                                                 <button type="submit" class="btn btn-primary btn-sm"
