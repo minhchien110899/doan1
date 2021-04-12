@@ -82,14 +82,14 @@
                                                                         trợ viên.
                                                                     </small>
                                                                     <input type="submit" style="display: none"
-                                                                        id="changeStatus">
+                                                                        id="changeStatus{{$inspector->id}}">
                                                                 </form>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button"
                                                                     class="btn btn-warning btn-sm no-border-radius"
                                                                     data-dismiss="modal"
-                                                                    onclick="$('#changeStatus').click()">Xác nhận</button>
+                                                                    onclick="$('#changeStatus{{$inspector->id}}').click()">Xác nhận</button>
                                                                 <button type="button"
                                                                     class="btn btn-secondary btn-sm no-border-radius"
                                                                     data-dismiss="modal">Đóng</button>
