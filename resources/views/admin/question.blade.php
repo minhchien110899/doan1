@@ -208,7 +208,7 @@
                                                     $stt = $key2 + 1;
                                                 ?>
                                                 <td class="text-center font-weight-bold">#{{$stt}}</td>
-                                                <td style="width:70%;overflow: hidden;white-space: normal;">{{ $question->content }}</td>
+                                                <td style="width:70%;overflow: hidden;white-space: normal;line-height: 20px;">{{ $question->content }}</td>
                                                 <?php 
                                                     if($question->level == 1):
                                                         $question_level = "Dễ";
