@@ -179,19 +179,19 @@
                                                                         required>
                                                                 </div>
                                                                 <div class="col-6">
-                                                                    <div class="form-check mt-3 mb-2">
+                                                                    <div class="form-check mt-4 mb-3">
                                                                         <input type="radio" name="answer" value="option1">
                                                                         <label>Option 1 đúng</label>
                                                                     </div>
-                                                                    <div class="form-check mt-2 mb-1">
+                                                                    <div class="form-check my-3">
                                                                         <input type="radio" name="answer" value="option2">
                                                                         <label>Option 2 đúng</label>
                                                                     </div>
-                                                                    <div class="form-check  mt-2 mb-1">
+                                                                    <div class="form-check  my-3">
                                                                         <input type="radio" name="answer" value="option3">
                                                                         <label>Option 3 đúng</label>
                                                                     </div>
-                                                                    <div class="form-check my-2">
+                                                                    <div class="form-check my-3">
                                                                         <input type="radio" name="answer" value="option4">
                                                                         <label>Option 4 đúng</label>
                                                                     </div>
@@ -217,7 +217,7 @@
                                 <table class="table card-text table-bordered table-sm table-hover">
                                     <thead>
                                         <tr>
-                                            <th colspan="3">
+                                            <th colspan="4">
                                                 <h5>{{ $chapter->name }} : {{ $chapter->description }}</h5>
                                             </th>
                                         </tr>
