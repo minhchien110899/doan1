@@ -23,7 +23,7 @@
                                         <p><small>"Có thể lấy lại dữ liệu trong ngân hàng câu hỏi."</small></p>
                                     </div>
                                     <div class="modal-footer">
-                                      <form action="/admin/testexam/{{$testexam->id}}/del_question/{{$question->id}}" method="POST">
+                                      <form action="/inspector/testexam/{{$testexam->id}}/del_question/{{$question->id}}" method="POST">
                                         @csrf
                                         <button type="submit" class="btn btn-primary btn-sm" name="del_question">Xác nhận</button>
                                       </form>
@@ -47,8 +47,8 @@
                         <div class="modal-content">
 	                          <div class="modal-body">
 	                          	<h4>Thêm câu hỏi</h4>
-	                          	<table class="table card-text table-bordered">
-			                      <thead>
+	                          	<table class="table table-light table-bordered">
+			                      <thead class="bg-info text-light">
 			                        <tr class="text-center">
 			                          <th>#</th>
 			                          <th>Câu hỏi</th>
@@ -57,12 +57,12 @@
 			                        </tr>
 			                      </thead>
 			                      <tbody>
-			                      	<form action="/admin/testexam/{{$testexam->id}}/add_question" method="POST">
+			                      	<form action="/inspector/testexam/{{$testexam->id}}/add_question" method="POST">
 			                      	@csrf	
 			                      	@foreach($questions_notBelongs as $key => $question)
 			                        <tr>
 			                          <td class="text-center">{{++$key}}</td>
-			                          <td style="width: 60%;">{{ $question->content }}</td>
+			                          <td style="width:70%;overflow: hidden;white-space: normal;line-height: 20px;">{{ $question->content }}</td>
 			                          <td  class="text-center">{{ $question->chapter->name ?? '' }}</td>
 			                          <td class="text-center"><input type="checkbox" name="question_added[]" value="{{$question->id}}"></td>
 			                        </tr>

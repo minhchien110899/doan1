@@ -3382,7 +3382,7 @@ pre {
 .table-light td,
 .table-light thead th,
 .table-light tbody + tbody {
-  border-color: #fbfcfc; }
+  border-color: #797979; }
 
 .table-hover .table-light:hover {
   background-color: #ececf6; }
