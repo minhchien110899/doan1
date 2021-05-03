@@ -87,3 +87,14 @@
 	}); 
 </script>
 @endif
+
+@if(session('elearning_error_alert'))
+<div class="container">
+	<div class="alert alert-danger my-1">
+			{{ session('elearning_error_alert') }}
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+		</div>
+</div>	
+@endif

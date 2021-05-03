@@ -26,7 +26,34 @@ class PersonalizeController extends Controller
     public function make(Request $req, $subject_id){
         $subject = Subject::where('id', $subject_id)->get()->first();
         $testexam = TestExam::where([['subject_id', $subject_id], ['level', 4]])->get()->random();
-        $questions = $testexam->question->shuffle();    
+        $questions = $testexam->question;
+        $chapters = DB::select('SELECT DISTINCT q.chapter_id FROM questions q JOIN question_testexam m ON q.id = m.question_id JOIN testexams t ON m.testexam_id = t.id WHERE m.testexam_id = ?', [$testexam->id]);
+        //ĐV: 40 = 12de ; 45 = 14tb ; 15 = 4kho
+        $easyQuestion_def_in_1chap = collect();
+        foreach($chapters as $chapt):
+            $easyQuestion_def_in_chap = $questions->where('level', '1')->where('chapter_id', $chapt->chapter_id);
+            if($easyQuestion_def_in_chap->isNotEmpty()):
+                $easyQuestion_def_in_1chap->push($easyQuestion_def_in_chap->random()); 
+            endif;    
+        endforeach;
+        // dd($easyQuestion_def_in_1chap);
+        $theRestEasyQuestion = $questions->where('level', '1')->diff($easyQuestion_def_in_1chap);
+        // dd($theRestEasyQuestion->where('level', '1'));
+        // dd($easyQuestion_def_in_1chap->count());
+        $theRestNumberQuestionNeeded = 12 - $easyQuestion_def_in_1chap->count();
+        // dd($theRestNumberQuestionNeeded);
+        if($theRestEasyQuestion->count() < $theRestNumberQuestionNeeded){
+            return redirect()->back()->with('elearning_error_alert','Đề thi đang trong giai đoạn hoàn thiện,vui lòng chọn đề khác.');
+        }
+        $theRestEasyQuestion = $theRestEasyQuestion->random($theRestNumberQuestionNeeded);
+        $totalEasyQuestions = $theRestEasyQuestion->merge($easyQuestion_def_in_1chap);
+        // dd($totalEasyQuestions);
+        $totalMediumQuestions = $questions->where('level', '2')->random(14);
+        // dd($totalMediumQuestions);
+        $totalHardQuestions = $questions->where('level', '3')->random(4);
+        // dd($totalHardQuestions);
+        $questions = $totalEasyQuestions->merge($totalHardQuestions)->merge($totalMediumQuestions);
+        $questions = $questions->shuffle();
         return view('user.personalize.make', ['testexam' => $testexam, 'questions' => $questions]);
     }
 }

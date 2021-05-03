@@ -86,7 +86,7 @@ $lastname = ucwords($array_name[count($array_name) - 1]);
         <div class="row" style="position: absolute;bottom: 10px;left: 45%;">
             <div>
                 <a href="{{ url('/personalizeElearning/init') }}"
-                    class="btn btn-outline-warning btn-sm no-border-radius">Tạo mới</a>
+                    class="btn btn-warning btn-sm no-border-radius">Tạo mới</a>
             </div>
         </div>
     </div>
