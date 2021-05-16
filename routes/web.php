@@ -58,7 +58,12 @@ Route::group(['prefix' => 'personalizeElearning', 'namespace' => 'user'], functi
 	Route::get('/make/{id}', 'PersonalizeController@make');
 });
 Route::group(['prefix' => 'personalizeDetail', 'namespace' => 'user'], function(){
-	Route::post('/{id}', 'PersonalizeDetailController@index');
+	Route::get('/detail/{id}/step', 'PersonalizeDetailController@step');
+	Route::post('/detail/{id}/create_history/{step}', 'PersonalizeDetailController@create_history');
+	Route::get('/detail/{id}/history/{step}', 'PersonalizeDetailController@history');
+	Route::get('/detail/{id}','PersonalizeDetailController@index');
+	Route::post('/create', 'PersonalizeDetailController@createDetail');
+	Route::post('/{id}', 'PersonalizeDetailController@init');
 });
 
 //setting user

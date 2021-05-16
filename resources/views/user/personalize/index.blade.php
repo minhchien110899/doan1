@@ -6,60 +6,7 @@ $lastname = ucwords($array_name[count($array_name) - 1]);
 @extends('layouts.main')
 
 @section('content')
-    <style>
-        .progressbar-title {
-            font-size: 14px;
-            color: #848484;
-            text-transform: capitalize;
-        }
-
-        .progress {
-            height: 5px;
-            overflow: visible;
-            background: #f0f0f0;
-            margin-bottom: 40px;
-        }
-
-        .progress .progress-bar {
-            position: relative;
-            animation: animate-positive 2s;
-        }
-
-        .progress .progress-icon {
-            width: 30px;
-            height: 30px;
-            line-height: 25px;
-            border-radius: 50%;
-            font-size: 13px;
-            position: absolute;
-            top: -14px;
-            right: 0;
-            background: #fff;
-            border-width: 3px;
-            border-style: solid;
-        }
-
-        .progress-value {
-            font-size: 13px;
-            color: #848484;
-            position: absolute;
-            top: 16px;
-            right: 0;
-        }
-
-        @-webkit-keyframes animate-positive {
-            0% {
-                width: 0%;
-            }
-        }
-
-        @keyframes animate-positive {
-            0% {
-                width: 0%;
-            }
-        }
-
-    </style>
+    <link rel="stylesheet" href="/css/process_personalize.css">
     <div class="container w3-round-large w3-border py-2 mb-3" style="height:500px;max-height:1500px; position: relative; ">
 
         <div class="row my-2 text-center">

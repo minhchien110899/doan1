@@ -151,8 +151,7 @@
                         </div>
                     </div>
                     <footer class="w3-container d-flex justify-content-end">
-                        <button class="w3-btn w3-round-large w3-medium btn-primary w3-padding-small mr-1"
-                            name="change_avatar" onclick="$('#id01').hide();$('#id02').show();">Tiếp&gt;&gt; </button>
+                        <button class="w3-btn w3-round-large w3-medium btn-primary w3-padding-small mr-1" onclick="$('#id01').hide();$('#id02').show();">Tiếp&gt;&gt; </button>
                 </footer>
             </div>
         </div>
@@ -165,7 +164,7 @@
                     <div class="container px-0">
                         <h5 class="text-center font-weight-bold">Đề xuất lộ trình:</h5>
                         <div class="px-3"><small style="opacity: 0.5;font-size:11px">Hệ thống dựa vào kết quả đầu vào của bạn và đề xuất lộ trình mong muốn bạn đạt kết quả tốt nhất sau khi kết thúc.</small></div>
-                        <form style="border-bottom: 1px #e6e6e6 solid;margin-bottom: 15px;">
+                        <form action="/personalizeDetail/create" method="post" style="border-bottom: 1px #e6e6e6 solid;margin-bottom: 15px;">
                             @csrf
                             <input type="hidden" name="history_id">
                             <div class="selectRow px-3">
@@ -195,6 +194,7 @@
                                     <option value="10">10 điểm</option>
                                 </select>
                             </div>
+                            <input type="submit" id="submitBtn2" style="display: none">
                         </form>
                         <div class="row d-flex justify-content-center">
                             <img src="/images/superhero.svg" width="100px">
@@ -204,8 +204,7 @@
                         </div>
                     </div>
                     <footer class="w3-container d-flex justify-content-center">
-                        <button class="w3-btn w3-round-large w3-medium btn-primary w3-padding-small mr-1"
-                            name="change_avatar">Lưu</button>
+                        <button class="w3-btn w3-round-large w3-medium btn-primary w3-padding-small mr-1" onclick="$('#submitBtn2').click()">Lưu</button>
                         <a href='/personalizeElearning/init' class="w3-btn w3-round-large w3-medium btn-secondary w3-padding-small">Hủy</a>    
                 </footer>
             </div>

@@ -1951,3 +1951,7 @@ h1, h2, h3, h4, h5,
 .dropdown-menu-user:hover .dropdown-contentt {display: block;}
 
 .dropdown-menu-user:hover .dropbtn {background-color: inherit;color: #b31c2c;}
+
+.no-border-radius{
+  border-radius: 10px;
+}
