@@ -15,14 +15,28 @@
 		      <th scope="col">Mã đề</th>
 		      <th scope="col">Điểm</th>
 		      <th scope="col">Thực hiện</th>
+			  <th scope="col">Hoàn thành</th>
 		      <th scope="col">Hiệu chỉnh</th>
 		    </tr>
   			@foreach($histories as $key => $history)
 		    <tr>
 		     	<td>{{++$key}}</td>
 		     	<td>{{ App\TestExam::find($history->testexam_id)->name }}</td>
-		     	<td>{{$history->mark}}/5</td>
+				<?php
+					$questionCount = count($history->choose);
+				?>	 
+		     	<td>{{$history->mark}}/{{$questionCount}}</td>
 		     	<td>{{ date('H:i d-m-Y', strtotime($history->created_at)) }}</td>
+				 <?php
+				 if(!empty($history->time_up)):
+				 	$minute = round(($history->time_up)/60);
+				 	$second = ($history->time_up)%60;
+					$timer = $minute . 'p '.$second.'s';
+				else:
+					$timer = "";	 
+				endif;
+			   ?>
+				<td>{{$timer}}</td> 
 		     	<td><a href="/exam/result/detail/{{$history->id}}" class="btn btn-purple btn-sm">Chi tiết</a></td>
 		    </tr>
 		    @endforeach 

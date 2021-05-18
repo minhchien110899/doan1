@@ -39,10 +39,9 @@
                     <form action="/personalizeDetail/detail/{{$personalize->id}}/create_history/{{$step}}" method="POST" id="personalizeForm">
                         @csrf
                         <input type="hidden" id="countDown" name="countDown" value="">
-                        @if (count($questions) > 0)
-
+                        @if(count($questions) > 0)
                             @foreach ($questions as $key => $question)
-                                <input type="hidden" name="personalize_id" value="{{$personalize->id}}">
+                                <input type="hidden" name="testexam_id" value="{{ $testexam->id }}">
                                 <input type="hidden" name="questionChoose[]" value="{{ $question->id }}">
                                 <div class="row">
                                     <div class="col-12">
@@ -64,7 +63,6 @@
                                     </div>
                                 </div>
                             @endforeach
-
                         @endif
                         @if (count($questions) > 0)
                             <div class="text-center"><button type="submit" class="btn btn-outline-warning" name="complete">Nộp bài</button></div>

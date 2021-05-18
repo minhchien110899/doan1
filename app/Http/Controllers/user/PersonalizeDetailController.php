@@ -103,7 +103,53 @@ class PersonalizeDetailController extends Controller
             $step = 1;
             return view('user.personalize.detail.step',['testexam' => $testexam, 'questions' => $questions, 'step' => $step, 'personalize' => $personalize]);
         }else{
-            
+            $current_step = DB::select("select max(step) as 'current_step' from history_personalize where personalize_id = ?", [$id])[0]->current_step;
+            $next_step = $current_step + 1;
+            $exam_number = $personalize->exam_number;
+            $expect_mark = $personalize->expect_mark;
+
+            if($expect_mark >= 8):
+                $classify = 'pro';
+            elseif($expect_mark == 5):
+                $classify = 'low';
+            else:
+                $classify = 'normal';        
+            endif;
+
+            if($classify == 'low'):
+                $testexam = TestExam::where([['subject_id', $personalize->subject_id], ['level', 1]])->get()->random();
+                $questions = $this->easyStep($testexam);
+                $step = $next_step;
+                return view('user.personalize.detail.step',['testexam' => $testexam, 'questions' => $questions, 'step' => $step, 'personalize' => $personalize]);
+            elseif($classify == 'normal'):
+                // 1: easy 2:normal 3:hard
+                if($exam_number == 3):
+                    $arrStep = ['2' => '1', '3' => '2'];
+                elseif($exam_number == 4):
+                    $arrStep = ['2'=>'1', '3' => '2', '4' => '2'];
+                elseif($exam_number == 5):
+                    $arrStep = ['2'=>'1', '3' => '1', '4' => '2', '5' => '2'];
+                endif;
+            elseif($classify == 'pro'):
+                if($exam_number == 3):
+                    $arrStep = ['2' => '2', '3' => '3'];
+                elseif($exam_number == 4):
+                    $arrStep = ['2'=>'2', '3' => '2', '4' => '3'];
+                elseif($exam_number == 5):
+                    $arrStep = ['2'=>'2', '3' => '2', '4' => '2', '5' => '3'];
+                endif;
+            endif;
+            $level = $arrStep["$next_step"];  
+            $testexam = TestExam::where([['subject_id', $personalize->subject_id], ['level', $level]])->get()->random();
+            if($level == 1):
+                $questions = $this->easyStep($testexam);
+            elseif($level == 2):
+                $questions = $this->normalStep($testexam);
+            elseif($level == 3):
+                $questions = $this->hardStep($testexam);    
+            endif;    
+            $step = $next_step;
+            return view('user.personalize.detail.step',['testexam' => $testexam, 'questions' => $questions, 'step' => $step, 'personalize' => $personalize]);           
         }
     }
 
@@ -175,17 +221,13 @@ class PersonalizeDetailController extends Controller
         //ĐV: 30 = 9de ; 40 = 12tb ; 30 = 9kho
         $easyQuestion_def_in_1chap = collect();
         foreach($chapters as $chapt):
-            $easyQuestion_def_in_chap = $questions->where('level', '3')->where('chapter_id', $chapt->chapter_id);
+            $easyQuestion_def_in_chap = $questions->where('level', '1')->where('chapter_id', $chapt->chapter_id);
             if($easyQuestion_def_in_chap->isNotEmpty()):
                 $easyQuestion_def_in_1chap->push($easyQuestion_def_in_chap->random()); 
             endif;    
         endforeach;
-        // dd($easyQuestion_def_in_1chap);
         $theRestEasyQuestion = $questions->where('level', '1')->diff($easyQuestion_def_in_1chap);
-        // dd($theRestEasyQuestion->where('level', '1'));
-        // dd($easyQuestion_def_in_1chap->count());
         $theRestNumberQuestionNeeded = 9 - $easyQuestion_def_in_1chap->count();
-        // dd($theRestNumberQuestionNeeded);
         if($theRestEasyQuestion->count() < $theRestNumberQuestionNeeded){
             return redirect()->back()->with('elearning_error_alert','Đề thi đang trong giai đoạn hoàn thiện,vui lòng chọn đề khác.');
         }
@@ -216,7 +258,7 @@ class PersonalizeDetailController extends Controller
         }   
         endif;    
         $history = History::create([
-            'testexam_id' => $request->input('personalize_id'),
+            'testexam_id' => $request->input('testexam_id'),
             'user_id' => Auth::guard('web')->user()->id,
         ]);
         $history->choose = $select;

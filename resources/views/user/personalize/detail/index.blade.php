@@ -104,6 +104,12 @@
             margin-left: 5px;
         }
 
+        .wrapHistory {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
     </style>
     <div class="container w3-round-large w3-border py-2 mb-3">
         <div class="wrapBox">
@@ -163,13 +169,17 @@
             </ul>
         </div>
         <div class="text-center d-flex justify-content-center">
-            <a href="/personalizeDetail/detail/{{ $personalize->id }}/step"><button
-                    class="btn btn-info text-center no-border-radius">Play</button></a>
+            @if ($exam_number == $current_step)
+                <p>Hoàn thành</p>
+            @else
+                <a href="/personalizeDetail/detail/{{ $personalize->id }}/step"><button
+                        class="btn btn-info text-center no-border-radius">Play</button></a>
+            @endif
         </div>
         <span class="text-left">Chi tiết</span><span class="spanRed">Từng bài</span>
         <div class="wrapHistory my-4">
             @foreach ($history as $key => $val)
-                <div class="card w-50">
+                <div class="card w-50 my-3">
                     <div class="card-header">
                         Bài {{ ++$key }}
                     </div>
@@ -186,12 +196,13 @@
                             <div class="col-6 text-right">{{ $val->mark }} câu</div>
                             <div class="col-6 text-left">Thời gian</div>
                             <?php
-                              $minute = round(($val->time_up)/60);
-                              $second = ($val->time_up)%60;
+                            $minute = round($val->time_up / 60);
+                            $second = $val->time_up % 60;
                             ?>
-                            <div class="col-6 text-right">{{$minute}}p {{$second}}s</div>
+                            <div class="col-6 text-right">{{ $minute }}p {{ $second }}s</div>
                         </div>
-                        <a href="/personalizeDetail/detail/{{ $personalize->id }}/history/{{$key}}" class="detailExam">Chi Tiết...</a>
+                        <a href="/personalizeDetail/detail/{{ $personalize->id }}/history/{{ $key }}"
+                            class="detailExam">Chi Tiết...</a>
                     </div>
                 </div>
             @endforeach

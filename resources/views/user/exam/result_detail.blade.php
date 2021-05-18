@@ -13,7 +13,10 @@
 			    			<p>Đã thực hiện: {{date('H:i d-m-Y', strtotime($history->created_at)) }}</p>	
 			  			</div>
 			  			<div class="col-md-4 text-right">
-			  				<h4 class="font-weight-bold">Điểm: <span class="text-danger">{{$history->mark}}/5</span></h4>
+							<?php
+								$questionCount = count($history->choose);
+							?>
+			  				<h4 class="font-weight-bold">Điểm: <span class="text-danger">{{$history->mark}}/{{$questionCount}}</span></h4>
 			  			</div>
 			  		</div>
 			  	</div>

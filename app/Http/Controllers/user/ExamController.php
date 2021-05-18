@@ -92,7 +92,7 @@ class ExamController extends Controller
 
     public function all_result(){
         $userId = Auth::guard('web')->user()->id;
-        $histories = History::where([['user_id', $userId],['test_entrance', 0]])->latest()->paginate(10);
+        $histories = History::where('user_id', $userId)->whereIn('test_entrance',[0, 2])->latest()->paginate(10);
         return view('user.exam.result', ['histories' => $histories]);
     }
 
