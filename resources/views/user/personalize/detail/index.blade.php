@@ -159,7 +159,15 @@
                         <p>Bài {{ $number }}</p>
                         <p>
                             @if ($current_step >= $number)
-                                <img src="/images/checked.svg" class="imgIcon">
+                                @if ($number == $personalize->exam_number)
+                                    @if ($personalize->check_success() == 1)
+                                        <img src="/images/checked.svg" class="imgIcon">
+                                    @else
+                                        <img src="/images/cancel.svg" class="imgIcon">
+                                    @endif
+                                @else
+                                    <img src="/images/checked.svg" class="imgIcon">
+                                @endif
                             @else:
                                 <img src="/images/timer.svg" class="imgIcon">
                             @endif
@@ -170,7 +178,16 @@
         </div>
         <div class="text-center d-flex justify-content-center">
             @if ($exam_number == $current_step)
-                <p>Hoàn thành</p>
+                @if ($personalize->check_success() == 1)
+                    <p class="text-uppercase mb-0 d-flex justify-content-center"
+                        style="color: #55b776; font-weight:900; align-items:center;font-size:25px">Hoàn thành</p>
+                    <img src="/images/happy.svg" width="80px" class="ml-4">
+                @else
+                    <p class="text-uppercase mb-0 d-flex justify-content-center"
+                    style="color: #ff9811; font-weight:900; align-items:center;font-size:25px">Chưa đạt</p>
+                    <img src="/images/crying.svg" width="80px" class="ml-4">
+                @endif
+
             @else
                 <a href="/personalizeDetail/detail/{{ $personalize->id }}/step"><button
                         class="btn btn-info text-center no-border-radius">Play</button></a>
