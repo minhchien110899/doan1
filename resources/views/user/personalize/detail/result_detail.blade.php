@@ -47,7 +47,7 @@
 					    @endforeach 
 					</table>	
 			  		@endforeach
-                      <a href="/personalizeDetail/detail/{{$history->personalize_id}}" class="btn btn-warning my-2" >Tiếp tục lộ trình</a>
+                      <a href="/personalizeDetail/detail/{{$history->personalize_id}}" class="btn btn-warning my-2">Xem lại lộ trình</a>
 			  		{{-- <a href="/exam/result/detail/{{$history->id}}/send_mail" class="btn btn-warning my-2" >Gửi kết quả về mail</a> --}}
 			  </div>
 			</div>

@@ -177,52 +177,65 @@
             </ul>
         </div>
         <div class="text-center d-flex justify-content-center">
-            @if ($exam_number == $current_step)
-                @if ($personalize->check_success() == 1)
-                    <p class="text-uppercase mb-0 d-flex justify-content-center"
-                        style="color: #55b776; font-weight:900; align-items:center;font-size:25px">Hoàn thành</p>
-                    <img src="/images/happy.svg" width="80px" class="ml-4">
-                @else
-                    <p class="text-uppercase mb-0 d-flex justify-content-center"
-                    style="color: #ff9811; font-weight:900; align-items:center;font-size:25px">Chưa đạt</p>
-                    <img src="/images/crying.svg" width="80px" class="ml-4">
-                @endif
+            <?php
+            $expired_time = strtotime($personalize->expired_time);
+            $now = time();
+            $distance = $expired_time - $now;
+            ?>
+            @if ($distance > 0)
+                @if ($exam_number == $current_step)
+                    @if ($personalize->check_success() == 1)
+                        <p class="text-uppercase mb-0 d-flex justify-content-center"
+                            style="color: #55b776; font-weight:900; align-items:center;font-size:25px">Hoàn thành</p>
+                        <img src="/images/happy.svg" width="80px" class="ml-4">
+                    @else
+                        <p class="text-uppercase mb-0 d-flex justify-content-center"
+                            style="color: #ff9811; font-weight:900; align-items:center;font-size:25px">Chưa đạt</p>
+                        <img src="/images/crying.svg" width="80px" class="ml-4">
+                    @endif
 
+                @else
+                    <a href="/personalizeDetail/detail/{{ $personalize->id }}/step"><button
+                            class="btn btn-info text-center no-border-radius">Play</button></a>
+                @endif
             @else
-                <a href="/personalizeDetail/detail/{{ $personalize->id }}/step"><button
-                        class="btn btn-info text-center no-border-radius">Play</button></a>
+                <button class="btn btn-danger no-border-radius text-white">Hết hạn</button>
             @endif
         </div>
         <span class="text-left">Chi tiết</span><span class="spanRed">Từng bài</span>
         <div class="wrapHistory my-4">
-            @foreach ($history as $key => $val)
-                <div class="card w-50 my-3">
-                    <div class="card-header">
-                        Bài {{ ++$key }}
-                    </div>
-                    <div class="card-body">
-                        <?php
-                        $true = $val->mark;
-                        $mark = ($true * 10) / 30;
-                        $mark = number_format($mark, 2, '.', '');
-                        ?>
-                        <div class="row">
-                            <div class="col-6 text-left">Điểm</div>
-                            <div class="col-6 text-right">{{ $mark }} điểm</div>
-                            <div class="col-6 text-left">Số câu đúng</div>
-                            <div class="col-6 text-right">{{ $val->mark }} câu</div>
-                            <div class="col-6 text-left">Thời gian</div>
-                            <?php
-                            $minute = round($val->time_up / 60);
-                            $second = $val->time_up % 60;
-                            ?>
-                            <div class="col-6 text-right">{{ $minute }}p {{ $second }}s</div>
+            @if (count($history) > 0)
+                @foreach ($history as $key => $val)
+                    <div class="card w-50 my-3">
+                        <div class="card-header">
+                            Bài {{ ++$key }}
                         </div>
-                        <a href="/personalizeDetail/detail/{{ $personalize->id }}/history/{{ $key }}"
-                            class="detailExam">Chi Tiết...</a>
+                        <div class="card-body">
+                            <?php
+                            $true = $val->mark;
+                            $mark = ($true * 10) / 30;
+                            $mark = number_format($mark, 2, '.', '');
+                            ?>
+                            <div class="row">
+                                <div class="col-6 text-left">Điểm</div>
+                                <div class="col-6 text-right">{{ $mark }} điểm</div>
+                                <div class="col-6 text-left">Số câu đúng</div>
+                                <div class="col-6 text-right">{{ $val->mark }} câu</div>
+                                <div class="col-6 text-left">Thời gian</div>
+                                <?php
+                                $minute = round($val->time_up / 60);
+                                $second = $val->time_up % 60;
+                                ?>
+                                <div class="col-6 text-right">{{ $minute }}p {{ $second }}s</div>
+                            </div>
+                            <a href="/personalizeDetail/detail/{{ $personalize->id }}/history/{{ $key }}"
+                                class="detailExam">Chi Tiết...</a>
+                        </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            @else
+                <p>Hiện tại bạn chưa làm bài nào...</p>
+            @endif
         </div>
         <div class="alertDesc">
             Chú ý: Đối với lộ trình bạn đã tạo thành công, mỗi bài thi sẽ có một mức độ khác nhau dựa trên số điểm mà bạn
@@ -254,6 +267,11 @@
                 //  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
                 // Output the result in an element with id="demo"
+                if(days < 0 && hours < 0 && minutes < 0){
+                    days = 0;
+                    hours = 0;
+                    minutes = 0;
+                }
                 document.getElementById("countDown").innerHTML = days + " ngày " + hours + "h-" +
                     minutes + "m";
 

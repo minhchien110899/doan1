@@ -2,6 +2,7 @@
     font-size: 14px;
     color: #848484;
     text-transform: capitalize;
+    margin-bottom: 15px;
 }
 
 .progress {
@@ -13,7 +14,7 @@
 
 .progress .progress-bar {
     position: relative;
-    animation: animate-positive 2s;
+    animation: animate-positive 1s;
 }
 
 .progress .progress-icon {
@@ -24,7 +25,7 @@
     font-size: 13px;
     position: absolute;
     top: -14px;
-    right: 0;
+    right: -15px;
     background: #fff;
     border-width: 3px;
     border-style: solid;

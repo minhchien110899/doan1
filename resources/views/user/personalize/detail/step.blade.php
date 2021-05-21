@@ -72,7 +72,6 @@
                     </form>
                 </div>
             </div>
-            <a href="javascript:void(0)" onclick="window.history.back()" style="margin-bottom: 30px !important;">&larr; Quay lại</a>
         </div>
     </div>
     <script src="{{ url('/js/jquery-3.3.1.min.js') }}"></script>

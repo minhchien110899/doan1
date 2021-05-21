@@ -178,6 +178,10 @@
                             <div class="selectRow px-3">
                                 <div>Thời gian hoàn thành:</div>
                                 <select name="expired_time" class="custom-select custom-select-sm">
+                                    <option value="1">1 ngày</option>
+                                    <option value="2">2 ngày</option>
+                                    <option value="3">3 ngày</option>
+                                    <option value="4">4 ngày</option>
                                     <option value="5">5 ngày</option>
                                     <option value="6">6 ngày</option>
                                     <option value="7">7 ngày</option>
@@ -186,12 +190,12 @@
                             <div class="selectRow px-3">
                                 <div>Số điểm mong muốn(khoảng):</div>
                                 <select name="expect_mark" class="custom-select custom-select-sm">
-                                    <option value="5">~5 điểm</option>
+                                    {{-- <option value="5">~5 điểm</option>
                                     <option value="6">~6 điểm</option>
                                     <option value="7">~7 điểm</option>
                                     <option value="8">~8 điểm</option>
                                     <option value="9">~9 điểm</option>
-                                    <option value="10">10 điểm</option>
+                                    <option value="10">10 điểm</option> --}}
                                 </select>
                             </div>
                             <input type="submit" id="submitBtn2" style="display: none">
@@ -245,6 +249,25 @@
                         //Điểm kt
                         var mark = (parseInt(history.mark)) * 10 / 30;
                         mark = mark.toFixed(2);
+                        if(mark > 4){
+                            for (Math.round(mark); i <= 10; i++) {
+                                if(i == 10){
+                                    $('select[name="expect_mark"]').append(`<option value="${i}">${i} điểm</option>`);
+                                }
+                                else {
+                                    $('select[name="expect_mark"]').append(`<option value="${i}">~${i} điểm</option>`);
+                                }
+                            }
+                        } else{
+                            for (i=5; i <= 10; i++) {
+                            if(i == 10){
+                                $('select[name="expect_mark"]').append(`<option value="${i}">${i} điểm</option>`);
+                            }
+                            else {
+                                $('select[name="expect_mark"]').append(`<option value="${i}">~${i} điểm</option>`);
+                            }
+                            }
+                        }
                         $('#mark').text(mark + " Điểm");
                         var minutes = parseInt(history.time_up / 60, 10);
                         var seconds = parseInt(history.time_up % 60, 10);

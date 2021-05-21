@@ -9,9 +9,11 @@ $lastname = ucwords($array_name[count($array_name) - 1]);
     <link rel="stylesheet" href="/css/process_personalize.css">
     <style>
         .wrapEach {
-            border-bottom: 1px #b4b2b2 solid;
-            padding: 0 2vw;
-            margin-top: 20px;
+            border: 1px #d4d2d2 solid;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 15px auto;
+            width: 60%;
         }
 
         .buttonCustomer {
@@ -21,14 +23,14 @@ $lastname = ucwords($array_name[count($array_name) - 1]);
             border: 0;
         }
         .buttonCustomer:hover{
-            background: #f85549;
+            background: #ff5144;
         }
         .buttonCustomer a {
             color: white;
         }
 
     </style>
-    <div class="container w3-round-large w3-border py-2 mb-3" style="height:500px;max-height:1500px; position: relative; ">
+    <div class="container w3-round-large w3-border py-2 mb-3" style="height:70vh;max-height:20000px; position: relative; ">
 
         <div class="row my-2 text-center">
             <div class="col">
@@ -39,7 +41,7 @@ $lastname = ucwords($array_name[count($array_name) - 1]);
         <div class="row">
             @if (count($personalizes) > 0)
                 @foreach ($personalizes as $key => $val)
-                    <div class="col-12 wrapEach">
+                    <div class="wrapEach">
                         {{-- <h3 class="progressbar-title">Tiếng Anh</h3>
                     <div class="progress">
                         <div class="progress-bar" style="width: 65%; background: #ed687c;">
@@ -69,7 +71,7 @@ $lastname = ucwords($array_name[count($array_name) - 1]);
         </div>
         <div class="row" style="position: absolute;bottom: 10px;left: 45%;">
             <div>
-                <a href="{{ url('/personalizeElearning/init') }}" class="btn btn-warning btn-sm no-border-radius">Tạo
+                <a href="{{ url('/personalizeElearning/init') }}" class="btn btn-warning btn-sm no-border-radius mt-4">Tạo
                     mới</a>
             </div>
         </div>
