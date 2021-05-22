@@ -107,13 +107,13 @@
                             <i class="mdi mdi-home menu-icon"></i>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" href="{{ url('/inspector/subject') }}">
-                            <span class="menu-title">Quản lý môn học</span>
+                            <span class="menu-title">Quản lý môn học</span> --}}
                             {{-- <i class="mdi mdi-book menu-icon"></i> --}}
-                            <i class="fas fa-book menu-icon"></i>
+                            {{-- <i class="fas fa-book menu-icon"></i>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/inspector/testexam') }}">
                             <span class="menu-title">Quản lý bài thi</span>

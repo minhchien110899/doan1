@@ -24,4 +24,17 @@ class Question extends Model
     public function option(){
     	return $this->hasOne('App\Option');
     }
+    public function getLevel(){
+        $testexam = self::find($this->id);
+        $level = $testexam->level;
+        if($level == 1):
+             return "Dễ";
+        elseif($level == 2):
+             return "Bình thường";
+        elseif($level == 3):
+             return "Khó";
+        else:
+           return " ";          
+        endif;  
+     }
 }

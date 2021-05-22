@@ -86,7 +86,7 @@ $lastname = ucwords($array_name[count($array_name) - 1]);
                                         </div>
                                     @endif
                                 @else
-                                        <p class="mb-0"></p>
+                                        <p class="text-uppercase text-info mb-0 centerFlex">Đang thực hiện</p>
                                 @endif
                             @else
                                 <div>

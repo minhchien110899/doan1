@@ -52,6 +52,7 @@
 			                        <tr class="text-center">
 			                          <th>#</th>
 			                          <th>Câu hỏi</th>
+									  <th>Mức độ</th>
 			                          <th>Chương</th>
 			                          <th>Thêm</th>
 			                        </tr>
@@ -63,6 +64,7 @@
 			                        <tr>
 			                          <td class="text-center">{{++$key}}</td>
 			                          <td style="width:70%;overflow: hidden;white-space: normal;line-height: 20px;">{{ $question->content }}</td>
+									  <td class="text-center">{{$question->getLevel()}}</td>
 			                          <td  class="text-center">{{ $question->chapter->name ?? '' }}</td>
 			                          <td class="text-center"><input type="checkbox" name="question_added[]" value="{{$question->id}}"></td>
 			                        </tr>

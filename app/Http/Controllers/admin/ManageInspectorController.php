@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Inspector;
+use App\Subject;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -33,7 +34,8 @@ class ManageInspectorController extends Controller
         return redirect()->back()->with('changed_success_alert', "true");
     }
     public function adding_page(){
-        return view('admin.add_inspector');
+        $subjects = Subject::all();
+        return view('admin.add_inspector', ['subjects' => $subjects]);
     }
     public function add_inspector(Request $request){
         $validator = Validator::make($request->all(), [
@@ -48,11 +50,13 @@ class ManageInspectorController extends Controller
         $email = $request->input('email');
         $username = $request->input('username');
         $password = $request->input('password') ?? 'password';
+        $subject_id = $request->input('subject_id');
         Inspector::create([
             'name' => $name,
             'email' => $email,
             'username' => $username,
             'password' => Hash::make($password),
+            'subject_id' => $subject_id
         ]);
         return redirect(route('admin.inspector'))->with('added_inspector_success_alert', 'true');
 

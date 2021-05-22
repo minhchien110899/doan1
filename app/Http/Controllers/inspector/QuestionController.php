@@ -9,19 +9,20 @@ use App\Chapter;
 use App\Question;
 use App\TestExam;
 use App\Option;
-
+use Auth;
 class QuestionController extends Controller
 {
     public function __construct(){
     	$this->middleware('auth:inspector');
     }
     public function index(Request $request){
-        if(!empty($request->subject_id) &&  $request->subject_id != 'all'):
-            $subjects = Subject::where('id', $request->subject_id)->get();
-        else:
-            $subjects = Subject::all();    
-        endif;    
-        $chapters = Chapter::all();
+        $subject_id = Auth::user()->subject_id;
+        // if(!empty($request->subject_id) &&  $request->subject_id != 'all'):
+        //     $subjects = Subject::where('id', $request->subject_id)->get();
+        // else:
+            $subjects = Subject::where('id', $subject_id)->get();    
+        // endif;    
+        $chapters = Chapter::where('id', $subject_id)->get();
         $trash_questions = Question::onlyTrashed()->get();
         return view('inspector.question', ['subjects' => $subjects,'subjects_template' => Subject::all() , 'chapters' => $chapters, 'trash_questions' => $trash_questions, 'req_subject' => $request->subject_id]);
     }

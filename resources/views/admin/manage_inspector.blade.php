@@ -20,9 +20,13 @@
                     <div class="card-body">
                         <div class="container-fluid">
                             <div class="row d-flex justify-content-end">
-                                <div class="col-3 mb-2 pr-0"><input type="text" class="form-control no-border-radius" id="myInput1" onkeyup="myFunction1()" placeholder="Tìm kiếm theo tên..." title="Type in a email"></div>
-                                <div class="col-3 mb-2"><input type="text" class="form-control no-border-radius" id="myInput" onkeyup="myFunction()" placeholder="Tìm kiếm theo username..." title="Type in a username"></div>
-                              </div>
+                                <div class="col-3 mb-2 pr-0"><input type="text" class="form-control no-border-radius"
+                                        id="myInput1" onkeyup="myFunction1()" placeholder="Tìm kiếm theo tên..."
+                                        title="Type in a email"></div>
+                                <div class="col-3 mb-2"><input type="text" class="form-control no-border-radius"
+                                        id="myInput" onkeyup="myFunction()" placeholder="Tìm kiếm theo username..."
+                                        title="Type in a username"></div>
+                            </div>
                             <table class="table table-bordered table-hover" id="myTable">
                                 <thead>
                                     <tr>
@@ -82,14 +86,15 @@
                                                                         trợ viên.
                                                                     </small>
                                                                     <input type="submit" style="display: none"
-                                                                        id="changeStatus{{$inspector->id}}">
+                                                                        id="changeStatus{{ $inspector->id }}">
                                                                 </form>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button"
                                                                     class="btn btn-warning btn-sm no-border-radius"
                                                                     data-dismiss="modal"
-                                                                    onclick="$('#changeStatus{{$inspector->id}}').click()">Xác nhận</button>
+                                                                    onclick="$('#changeStatus{{ $inspector->id }}').click()">Xác
+                                                                    nhận</button>
                                                                 <button type="button"
                                                                     class="btn btn-secondary btn-sm no-border-radius"
                                                                     data-dismiss="modal">Đóng</button>
@@ -139,6 +144,7 @@
                                                                         endif; ?>
                                                                         <label>Trạng thái:</label> <span
                                                                             class="badge badge-{{ $class }}">{{ $status }}</span><br>
+                                                                        <label>Thuộc môn học:</label> <span>{{\App\Subject::find($inspector->subject_id)->name}}</span><br>
                                                                         <label>Khởi tạo:</label>
                                                                         {{ date('d-m-Y', strtotime($inspector->created_at)) }}<br>
                                                                     </div>
@@ -227,6 +233,7 @@
                 }
             }
         }
+
         function myFunction1() {
             var input, filter, table, tr, td, i, txtValue;
             input = document.getElementById("myInput1");
@@ -245,5 +252,6 @@
                 }
             }
         }
+
     </script>
 @endsection

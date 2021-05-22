@@ -155,15 +155,15 @@ Route::group(['prefix' => 'inspector','namespace' => 'inspector'], function(){
 		Route::post('/change_avatar/{id}', 'ProfileController@change_avatar');
 	});
 	//subject
-	Route::group(['prefix' => 'subject'],function(){
-		Route::get('/','SubjectController@index')->name('inspector.subject');
-		Route::post('/change_name/{id}','SubjectController@change_name');
-		Route::post('/off_status/{id}','SubjectController@off_status');
-		Route::post('/on_status/{id}','SubjectController@on_status');
-		Route::post('/add_subject', 'SubjectController@add_subject');
-		Route::post('/del_subject/{id}','SubjectController@del_subject');
-		Route::get('/restore_trash/{id}', 'SubjectController@restore_trash');
-	});
+	// Route::group(['prefix' => 'subject'],function(){
+	// 	Route::get('/','SubjectController@index')->name('inspector.subject');
+	// 	Route::post('/change_name/{id}','SubjectController@change_name');
+	// 	Route::post('/off_status/{id}','SubjectController@off_status');
+	// 	Route::post('/on_status/{id}','SubjectController@on_status');
+	// 	Route::post('/add_subject', 'SubjectController@add_subject');
+	// 	Route::post('/del_subject/{id}','SubjectController@del_subject');
+	// 	Route::get('/restore_trash/{id}', 'SubjectController@restore_trash');
+	// });
 	//manage testexam
 	Route::group(['prefix' => 'testexam'], function(){
 		Route::get('/', 'TestExamController@index')->name('inspector.testexam');

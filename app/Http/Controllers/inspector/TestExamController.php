@@ -8,6 +8,7 @@ use App\TestExam;
 use App\Subject;
 use App\Question;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class TestExamController extends Controller
 {
@@ -16,7 +17,8 @@ class TestExamController extends Controller
     }
 
     public function index(){
-    	$testexams = TestExam::withCount('question')->orderBy('subject_id','asc')->paginate(15);
+        $subject_id = Auth::user()->subject_id;
+    	$testexams = TestExam::withCount('question')->where('subject_id', $subject_id)->orderBy('subject_id','asc')->paginate(15);
     	$trash_testexams = TestExam::onlyTrashed()->get();
         $subjects = Subject::all(); 
     	return view('inspector.testexam', ['testexams' => $testexams, 'trash_testexams' => $trash_testexams, 'subjects' => $subjects]);
@@ -80,7 +82,7 @@ class TestExamController extends Controller
            } 
         // Câu hỏi không có trong đề nhưng có trong khung môn học   
         $questions_notBelongs = array_diff($allquestion, $questions_belongs);
-        $questions_notBelongs = Question::whereIn('id', $questions_notBelongs)->orderBy('chapter_id','asc')->get();  
+        $questions_notBelongs = Question::whereIn('id', $questions_notBelongs)->orderBy('chapter_id','asc')->orderBy('level', 'asc')->get();  
         return view('inspector.testexam.review', ['testexam' => $testexam, 'questions' => $questions, 'questions_notBelongs' => $questions_notBelongs]);
     }
 

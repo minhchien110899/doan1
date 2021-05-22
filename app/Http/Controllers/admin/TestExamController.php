@@ -79,7 +79,7 @@ class TestExamController extends Controller
            } 
         // Câu hỏi không có trong đề nhưng có trong khung môn học   
         $questions_notBelongs = array_diff($allquestion, $questions_belongs);
-        $questions_notBelongs = Question::whereIn('id', $questions_notBelongs)->orderBy('chapter_id','asc')->get();  
+        $questions_notBelongs = Question::whereIn('id', $questions_notBelongs)->orderBy('chapter_id','asc')->orderBy('level', 'asc')->get();  
         return view('admin.testexam.review', ['testexam' => $testexam, 'questions' => $questions, 'questions_notBelongs' => $questions_notBelongs]);
     }
 

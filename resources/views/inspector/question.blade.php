@@ -25,7 +25,7 @@
                                 <div class="col-3 col-sm-3 col-lg-3">
                                     {{-- <a href="#" class="btn btn-outline-success mr-1" data-toggle="modal"
                                         data-target="#add_question">Thêm Câu hỏi</a> --}}
-                                    <form action="/inspector/question" method="get">
+                                    {{-- <form action="/inspector/question" method="get">
                                         <div class="input-group">
 
                                             <select name="subject_id" class="form-control no-border-radius">
@@ -44,7 +44,7 @@
                                             </div>
 
                                         </div>
-                                    </form>
+                                    </form> --}}
                                     {{-- <a href="#" class="btn btn-outline-dark btn-sm mx-0 mt-2" data-toggle="modal"
                                         data-target="#trash_question">Rác</a> --}}
 

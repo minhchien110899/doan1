@@ -18,6 +18,12 @@
                             <label class="mb-0">Email: <span class="text-danger alert-error">@error('email'){{ $message }}@enderror</span></label>
                             <input type="email" name="email" class="form-control no-border-radius mb-2"
                                 placeholder="Nhập Email..." value="{{ old('email')?? '' }}">
+                            <label class="mb-0">Thuộc môn học:</label>
+                            <select name="subject_id" class="custom-select">
+                                @foreach($subjects as $key => $subject)
+                                <option value="{{$subject->id}}">{{$subject->name}}</option>
+                                @endforeach
+                            </select>    
                             <label class="mb-0">Username: <span class="text-danger alert-error">@error('username'){{ $message }}@enderror</span></label>
                             <input type="text" name="username" class="form-control no-border-radius mb-2"
                                 placeholder="Nhập Username..." value="{{ old('username')?? '' }}">
