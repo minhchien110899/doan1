@@ -22,11 +22,19 @@ $lastname = ucwords($array_name[count($array_name) - 1]);
             border-radius: 8px;
             border: 0;
         }
-        .buttonCustomer:hover{
+
+        .buttonCustomer:hover {
             background: #ff5144;
         }
+
         .buttonCustomer a {
             color: white;
+        }
+        .centerFlex{
+            display: flex;
+            align-items: center;
+            padding-top: 2px;
+            font-weight: bold;
         }
 
     </style>
@@ -60,8 +68,33 @@ $lastname = ucwords($array_name[count($array_name) - 1]);
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-end mb-2">
-                            <button class="buttonCustomer"><a href="/personalizeDetail/detail/{{ $val->id }}">Chi tiết</a></button>
+                        <div class="d-flex justify-content-between mb-2">
+                            <?php
+                            $expired_time = strtotime($val->expired_time);
+                            $now = time();
+                            $distance = $expired_time - $now;
+                            ?>
+                            @if ($distance > 0)
+                                @if ($val->current_step() == $val->exam_number)
+                                    @if ($val->check_success() == 1)
+                                        <div>
+                                            <p class="text-uppercase text-success mb-0 centerFlex">Hoàn thành</p>
+                                        </div>
+                                    @elseif($val->check_success() == 0)
+                                        <div>
+                                            <p class="text-uppercase text-warning mb-0 centerFlex">Chưa đạt</p>
+                                        </div>
+                                    @endif
+                                @else
+                                        <p class="mb-0"></p>
+                                @endif
+                            @else
+                                <div>
+                                    <p class="text-uppercase text-danger mb-0 centerFlex">Hết hạn</p>
+                                </div>
+                            @endif
+                            <button class="buttonCustomer"><a href="/personalizeDetail/detail/{{ $val->id }}">Chi
+                                    tiết</a></button>
                         </div>
                     </div>
                 @endforeach
