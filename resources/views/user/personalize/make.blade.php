@@ -249,8 +249,9 @@
                         //Điểm kt
                         var mark = (parseInt(history.mark)) * 10 / 30;
                         mark = mark.toFixed(2);
-                        if(mark > 4){
-                            for (Math.round(mark); i <= 10; i++) {
+                        console.log();
+                        if(mark > 5){
+                            for (i = Math.round(mark); i <= 10; i++) {
                                 if(i == 10){
                                     $('select[name="expect_mark"]').append(`<option value="${i}">${i} điểm</option>`);
                                 }

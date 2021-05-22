@@ -38,7 +38,7 @@ $lastname = ucwords($array_name[count($array_name) - 1]);
         }
 
     </style>
-    <div class="container w3-round-large w3-border py-2 mb-3" style="height:70vh;max-height:20000px; position: relative; ">
+    <div class="container w3-round-large w3-border py-2 mb-3" style="min-height:600px;max-height:20000px; ">
 
         <div class="row my-2 text-center">
             <div class="col">
@@ -102,11 +102,9 @@ $lastname = ucwords($array_name[count($array_name) - 1]);
                 <small class="font-italic ml-3">Chưa có lộ trình học nào. Vui lòng tạo mới.</small>
             @endif
         </div>
-        <div class="row" style="position: absolute;bottom: 10px;left: 45%;">
-            <div>
+        <div class="row d-flex justify-content-center">
                 <a href="{{ url('/personalizeElearning/init') }}" class="btn btn-warning btn-sm no-border-radius mt-4">Tạo
                     mới</a>
-            </div>
         </div>
     </div>
 
