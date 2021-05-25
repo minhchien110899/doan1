@@ -4,6 +4,9 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use DB;
+use Illuminate\Support\Facades\Mail;
+use App\Subject;
+use App\User;
 
 class SendMailWhenExpiredTimeEqualOneDay extends Command
 {
@@ -12,7 +15,7 @@ class SendMailWhenExpiredTimeEqualOneDay extends Command
      *
      * @var string
      */
-    protected $signature = 'create:mailPersonalize';
+    protected $signature = 'create:mailpersonalize';
 
     /**
      * The console command description.
@@ -38,9 +41,12 @@ class SendMailWhenExpiredTimeEqualOneDay extends Command
      */
     public function handle()
     {
-        $usersNeedAlert = DB::select('select * FROM personalizes p join users u on p.user_id = u.id where p.expired_time - NOW() <= 86400 and p.expired_time - NOW() > 0 and p.done = 0');
-        foreach($usersNeedAlert as $i => $user):
-
+        $personalizes = DB::select('select * FROM personalizes where day(expired_time) - day(NOW()) <= 1 and day(expired_time) - day(NOW()) > 0 and done = 0');
+        foreach($personalizes as $i => $personalize):
+            $user = User::find($personalize->user_id);
+            $subject = Subject::find($personalize->subject_id);
+            $time = $personalize->expired_time; 
+            Mail::to($user->email)->send(new \App\Mail\SendPersonalize($subject->name, $time));
         endforeach;    
         return 0;
     }

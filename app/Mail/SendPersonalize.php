@@ -16,9 +16,11 @@ class SendPersonalize extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public $subjectName, $time;
+    public function __construct($subject, $time)
     {
-        //
+        $this->subjectName = $subject;
+        $this->time = $time;
     }
 
     /**
@@ -28,6 +30,6 @@ class SendPersonalize extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->subject('Thông báo thời gian lộ trình sắp kết thúc ở multichoice.online')->markdown('user.personalize.mail_personalize');
     }
 }

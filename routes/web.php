@@ -56,6 +56,7 @@ Route::group(['prefix' => 'personalizeElearning', 'namespace' => 'user'], functi
 	Route::get('/', 'PersonalizeController@index')->name('user.personalize');
 	Route::get('/init', 'PersonalizeController@init_personalize');
 	Route::get('/make/{id}', 'PersonalizeController@make');
+	Route::get('/test','PersonalizeController@test');
 });
 Route::group(['prefix' => 'personalizeDetail', 'namespace' => 'user'], function(){
 	Route::get('/detail/{id}/step', 'PersonalizeDetailController@step');

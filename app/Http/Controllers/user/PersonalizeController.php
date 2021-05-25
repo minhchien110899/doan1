@@ -9,6 +9,8 @@ use App\TestExam;
 use App\Personalize;
 use Auth;
 use DB;
+use Illuminate\Support\Facades\Mail;
+
 class PersonalizeController extends Controller
 {
     public function __construct(){
@@ -55,5 +57,12 @@ class PersonalizeController extends Controller
         $questions = $totalEasyQuestions->merge($totalHardQuestions)->merge($totalMediumQuestions);
         $questions = $questions->shuffle();
         return view('user.personalize.make', ['testexam' => $testexam, 'questions' => $questions]);
+    }
+    public function test(){
+        $personalize = Personalize::find(4);
+        $subject = Subject::find($personalize->subject_id);
+        $time = $personalize->expired_time; 
+        Mail::to('trinhminhchien110899@gmail.com')->send(new \App\Mail\SendPersonalize($subject->name, $time));
+        echo "đã gửi";
     }
 }
