@@ -9,12 +9,13 @@ use App\TestExam;
 use App\Personalize;
 use Auth;
 use DB;
+use App\User;
 use Illuminate\Support\Facades\Mail;
 
 class PersonalizeController extends Controller
 {
     public function __construct(){
-    	$this->middleware('auth:web');
+    	$this->middleware('auth:web',['except' =>['test']]);
     }
     public function index(){
         $user_id = Auth::guard('web')->user()->id;
@@ -59,10 +60,18 @@ class PersonalizeController extends Controller
         return view('user.personalize.make', ['testexam' => $testexam, 'questions' => $questions]);
     }
     public function test(){
-        $personalize = Personalize::find(4);
-        $subject = Subject::find($personalize->subject_id);
-        $time = $personalize->expired_time; 
-        Mail::to('trinhminhchien110899@gmail.com')->send(new \App\Mail\SendPersonalize($subject->name, $time));
-        echo "đã gửi";
+        // $personalize = Personalize::find(4);
+        // $subject = Subject::find($personalize->subject_id);
+        // $time = $personalize->expired_time; 
+        // Mail::to('trinhminhchien110899@gmail.com')->send(new \App\Mail\SendPersonalize($subject->name, $time));
+        // echo "đã gửi";
+        $personalizes = DB::select('select * FROM personalizes where day(expired_time) - day(NOW()) <= 1 and day(expired_time) - day(NOW()) > 0 and done = 0');
+        foreach($personalizes as $i => $personalize):
+            $user = User::find($personalize->user_id);
+            $subject = Subject::find($personalize->subject_id);
+            $time = $personalize->expired_time; 
+            Mail::to($user->email)->send(new \App\Mail\SendPersonalize($subject->name, $time));
+        endforeach; 
+        echo "thanh cong";
     }
 }
