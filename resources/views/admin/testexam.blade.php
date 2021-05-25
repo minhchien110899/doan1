@@ -1,7 +1,7 @@
 @extends('layouts.admin_main')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row mt-3 mb-3 justify-content-center">
             <div class="col-lg-10 text-center">
                 @error('subject_id')

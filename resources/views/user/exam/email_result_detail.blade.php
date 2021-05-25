@@ -18,7 +18,7 @@
 			    			<p>Đã thực hiện: {{date('H:i d-m-Y', strtotime($history->created_at)) }}</p>	
 			  			</div>
 			  			<div class="col-md-4 text-right">
-			  				<h4 class="font-weight-bold">Điểm: <span class="text-danger">{{$history->mark}}/5</span></h4>
+			  				<h4 class="font-weight-bold">Đúng/Tổng: <span class="text-danger">{{$history->mark}}/{{count($history->choose)}}</span></h4>
 			  			</div>
 			  		</div>
 			  	</div>

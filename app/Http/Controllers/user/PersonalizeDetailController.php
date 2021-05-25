@@ -98,7 +98,7 @@ class PersonalizeDetailController extends Controller
         $personalize = Personalize::find($id);
         $history_per = DB::select("select * from history_personalize where personalize_id = $id");
         if(count($history_per) == 0){
-            $testexam = TestExam::where([['subject_id', $personalize->subject_id], ['level', 1]])->get()->random();
+            $testexam = TestExam::where('subject_id', $personalize->subject_id)->where('level', 1)->get()->random();
             $questions = $this->easyStep($testexam);
             $step = 1;
             return view('user.personalize.detail.step',['testexam' => $testexam, 'questions' => $questions, 'step' => $step, 'personalize' => $personalize]);
@@ -244,6 +244,10 @@ class PersonalizeDetailController extends Controller
     }
 
     public function create_history(Request $request, $id, $step){
+        $personalize = Personalize::find($id);
+        if($step == $personalize->exam_number):
+            DB::update('update personalizes set done = 1 where id = ?', [$id]);
+        endif; 
         $questionIdChoose = $request->input('questionChoose');
         $select = $request->input('choose');
         if(!$select):

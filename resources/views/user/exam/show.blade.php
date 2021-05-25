@@ -9,7 +9,10 @@
 			<div class="card">
 			  <div class="card-body">
 			    <h3 class="card-title">{{ $exam->name }}</h3>
-			    <p class="card-text">{{$exam->description}}</p>	
+			    <p class="card-text" style="height: 50px;
+				white-space: nowrap;
+				overflow: hidden !important;
+				text-overflow: ellipsis;">{{$exam->description}}</p>	
 			    <a href="{{ url('/exam/make', $exam->id) }}" class="btn btn-warning">bắt đầu</a>
 			    {{-- <a href="{{ url('/exam/review', $exam->id) }}" class="btn btn-info">Tham khảo</a> --}}
 			    
