@@ -42,13 +42,7 @@
                                                     @csrf
                                                     <label class="mb-0 pl-2">Thuộc môn học:</label>
                                                     <select name="subject_id" class="form-control mb-2">
-                                                        <option>-Chọn môn học mà đề thi thuộc:</option>
-                                                        @if (count($subjects) > 0)
-                                                            @foreach ($subjects as $key => $subject)
-                                                                <option value="{{ $subject->id }}">{{ $subject->name }}
-                                                                </option>
-                                                            @endforeach
-                                                        @endif
+                                                        <option value="{{ $subject->id }}">{{ $subject->name }}</option>  
                                                     </select>
                                                     <label class="mb-0 pl-2">Tên dề thi:</label>
                                                     <input type="text" class="form-control mb-2" name="name" required

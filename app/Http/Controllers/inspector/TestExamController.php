@@ -19,9 +19,9 @@ class TestExamController extends Controller
     public function index(){
         $subject_id = Auth::user()->subject_id;
     	$testexams = TestExam::withCount('question')->where('subject_id', $subject_id)->orderBy('subject_id','asc')->paginate(15);
-    	$trash_testexams = TestExam::onlyTrashed()->get();
-        $subjects = Subject::all(); 
-    	return view('inspector.testexam', ['testexams' => $testexams, 'trash_testexams' => $trash_testexams, 'subjects' => $subjects]);
+    	$trash_testexams = TestExam::onlyTrashed()->where('subject_id', $subject_id)->get();
+        $subject = Subject::find($subject_id); 
+    	return view('inspector.testexam', ['testexams' => $testexams, 'trash_testexams' => $trash_testexams, 'subject' => $subject]);
     }
 
     public function change_name(Request $request, $id){
