@@ -23,8 +23,19 @@ class PersonalizeController extends Controller
         return view('user.personalize.index', ['personalizes' => $personalizes]);
     }
     public function init_personalize(){
-        $subjects = DB::select('select * from subjects where id = any(select subject_id from testexams where level = ?)', [4]);
-        return view('user.personalize.init_personalize', ['subjects' => $subjects]);        
+        $user_id = Auth::guard('web')->user()->id;
+        $personalizes = DB::select('select * FROM personalizes WHERE expired_time > NOW() and done = 0 and user_id = ?', [$user_id]);
+        if(count($personalizes) > 0):
+            $except_subject = [];
+            foreach($personalizes as $i => $personalize):
+               array_push($except_subject, $personalize->subject_id);
+            endforeach;
+            $except_subject = implode(',', $except_subject);
+            $subjects = DB::select('select * from subjects where id = any(select subject_id from testexams where level = ?) and id not in (?)', [4, $except_subject]);
+        else:
+            $subjects = DB::select('select * from subjects where id = any(select subject_id from testexams where level = ?)', [4]);
+        endif;
+        return view('user.personalize.init_personalize', ['subjects' => $subjects]);            
     }
     public function make(Request $req, $subject_id){
         $subject = Subject::where('id', $subject_id)->get()->first();

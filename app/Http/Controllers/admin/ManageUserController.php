@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class ManageUserController extends Controller
 {
@@ -20,6 +21,7 @@ class ManageUserController extends Controller
         $user = User::find($req->input('id_user'));
         $user->password = Hash::make('password'. $req->input('id_user'));
         $user->save();
+        Mail::to($user->email)->send(new \App\Mail\SendPasswordMail("Sinh viên", "password". $req->input('id_user')));
         return redirect()->back()->with('changed_success_alert', 'true');
     }
 }

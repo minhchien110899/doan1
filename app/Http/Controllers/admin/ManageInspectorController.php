@@ -9,6 +9,7 @@ use App\Subject;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
 
 class ManageInspectorController extends Controller
 {
@@ -31,6 +32,7 @@ class ManageInspectorController extends Controller
         $inspector = Inspector::find($request->input('id_inspector'));
         $inspector->password = Hash::make("password");
         $inspector->save();
+        Mail::to($inspector->email)->send(new \App\Mail\SendPasswordMail("Giáo viên", "password"));
         return redirect()->back()->with('changed_success_alert', "true");
     }
     public function adding_page(){

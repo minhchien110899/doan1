@@ -61,7 +61,7 @@
                     <form action="{{ url('/personalizeDetail', $testexam->id) }}" method="POST" id="personalizeForm">
                         @csrf
                         <input type="hidden" id="countDown" name="countDown" value="">
-                        @if (count($questions) > 0)
+                        @if (count($questions) >= 30)
 
                             @foreach ($questions as $key => $question)
                                 <input type="hidden" name="questionChoose[]" value="{{ $question->id }}">
@@ -87,7 +87,7 @@
                             @endforeach
 
                         @endif
-                        @if (count($questions) > 0)
+                        @if (count($questions) >= 30)
                             <div class="text-center"><button type="submit" class="btn btn-outline-warning" name="complete"
                                     id="makePersonalize">Nộp bài</button></div>
                         @else
@@ -96,7 +96,7 @@
                     </form>
                 </div>
             </div>
-            <a href="{{ url('/personalizeElearning/init') }}" style="margin-bottom: 30px !important;">&larr; Quay lại</a>
+            {{-- <a href="{{ url('/personalizeElearning/init') }}" style="margin-bottom: 30px !important;">&larr; Quay lại</a> --}}
         </div>
     </div>
     <div id="id01" class="w3-modal">

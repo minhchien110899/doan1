@@ -16,6 +16,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome1');
 });
+Route::get('/intro', function () {
+    return view('intro');
+});
+Route::get('/references', function () {
+    return view('references');
+});
+Route::get('/handshake', function () {
+    return view('handshake');
+});
+Route::get('/server', function () {
+    return view('server');
+});
+Route::get('/contact', function () {
+    return view('contact');
+});
 //User route
 Auth::routes();
 Route::post('/logout', 'Auth\LoginController@userLogout')->name('logout');

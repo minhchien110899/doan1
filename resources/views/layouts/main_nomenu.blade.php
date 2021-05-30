@@ -79,11 +79,11 @@
               <nav class="site-navigation text-left d-none d-lg-block " role="navigation">
                 <ul class="site-menu main-menu js-clone-nav">
                   <li><a href="/" class="nav-link">Trang Chủ</a></li>
-                  <li><a href="/" class="nav-link">Giới thiệu</a></li>
-                  <li><a href="/" class="nav-link">Tham khảo</a></li>
-                  <li><a href="/" class="nav-link">Công tác</a></li>
-                  <li><a href="/" class="nav-link">Dịch vụ</a></li>
-                  <li><a href="/" class="nav-link">Liên hệ</a></li>
+                  <li><a href="/intro" class="nav-link">Giới thiệu</a></li>
+                  <li><a href="/references" class="nav-link">Tham khảo</a></li>
+                  <li><a href="/handshake" class="nav-link">Cộng tác</a></li>
+                  <li><a href="/server" class="nav-link">Dịch vụ</a></li>
+                  <li><a href="/contact" class="nav-link">Liên hệ</a></li>
                   {{-- <li><a href="/chat" class="nav-link">Chat</a></li> --}}
                 </ul>
               </nav>

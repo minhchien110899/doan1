@@ -57,7 +57,12 @@ $lastname = ucwords($array_name[count($array_name) - 1]);
                             <div class="progress-value">65%</div>
                         </div>
                     </div> --}}
-                        <h3 class="progressbar-title text-uppercase">{{ \App\Subject::find("$val->subject_id")->name }}
+                        <?php
+                        $hashing = md5($val->id);
+                        $hashing = substr($hashing, 0, 6);
+                        $hashing = strtoupper($hashing);
+                        ?>
+                        <h3 class="progressbar-title text-uppercase">{{ \App\Subject::find("$val->subject_id")->name }}-{{$hashing}}
                         </h3>
                         <div class="progress">
                             <?php $mucDo = ($val->current_step() / $val->exam_number) * 100; ?>

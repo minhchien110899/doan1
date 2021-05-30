@@ -37,7 +37,7 @@
             <div class="card-body">
                 <form action="{{ url('/exam/create_history', $testexam->id) }}" method="POST">
                     @csrf
-                    @if (count($questions) > 10)
+                    @if (count($questions) >= 10)
                         @foreach ($questions->random(10) as $key => $question)
                             <input type="hidden" name="questionChoose[]" value="{{ $question->id }}">
                             <div class="row">
@@ -62,7 +62,7 @@
 					@else
 						<p>Đang cập nhật...Vui lòng chọn đề khác</p>
                     @endif
-                    @if (count($questions) > 10)
+                    @if (count($questions) >= 10)
                         <div class="text-center"><button type="submit" class="btn btn-outline-warning" name="complete">Nộp
                                 bài</button></div>
                     @else
